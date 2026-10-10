@@ -3,6 +3,7 @@
 A bespoke, editorial 60 FPS interactive portfolio engineered for Data & AI applications, scalable architectures, and real-time canvas interactions.
 
 🔗 **GitHub Repository**: [https://github.com/abhimanyu-kanase/cursor-portfolio](https://github.com/abhimanyu-kanase/cursor-portfolio)  
+🌐 **Live Website**: [https://abhimanyu-kanase.github.io/cursor-portfolio/](https://abhimanyu-kanase.github.io/cursor-portfolio/)  
 🚀 **Release Tag**: [v1.0.0](https://github.com/abhimanyu-kanase/cursor-portfolio/releases/tag/v1.0.0)
 
 ---

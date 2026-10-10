@@ -99,7 +99,7 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
 
     // Preload green background texture from photo
     const textureImg = new Image();
-    textureImg.src = '/green-texture.webp';
+    textureImg.src = `${import.meta.env.BASE_URL}green-texture.webp`;
     textureImg.onload = onImageLoaded;
     textureImg.onerror = () => {
       console.warn('Failed to load green-texture.webp, proceeding with solid fill fallback');
@@ -109,10 +109,10 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
 
     // Preload center frame
     const centerImg = new Image();
-    centerImg.src = '/frames/center.webp';
+    centerImg.src = `${import.meta.env.BASE_URL}frames/center.webp`;
     centerImg.onload = onImageLoaded;
     centerImg.onerror = () => {
-      centerImg.src = '/center.webp';
+      centerImg.src = `${import.meta.env.BASE_URL}center.webp`;
       centerImg.onload = onImageLoaded;
     };
     centerFrameRef.current = centerImg;
@@ -120,7 +120,7 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
     // Preload 64 directional frames
     for (let i = 0; i < TOTAL_FRAMES; i++) {
       const img = new Image();
-      img.src = `/frames/frame_${i}.webp`;
+      img.src = `${import.meta.env.BASE_URL}frames/frame_${i}.webp`;
       img.onload = onImageLoaded;
       img.onerror = () => {
         console.warn(`Failed to load frame_${i}.webp`);
@@ -437,7 +437,7 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
         <div
           className="absolute inset-0 z-40 flex flex-col items-center justify-center bg-[#182713]"
           style={{
-            backgroundImage: "url('/green-texture.webp')",
+            backgroundImage: `url('${import.meta.env.BASE_URL}green-texture.webp')`,
             backgroundRepeat: 'repeat',
             backgroundSize: '512px 512px',
           }}
@@ -466,7 +466,7 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
         className="w-full h-full block"
         style={{
           backgroundColor: BG_HEX,
-          backgroundImage: "url('/green-texture.webp')",
+          backgroundImage: `url('${import.meta.env.BASE_URL}green-texture.webp')`,
           backgroundRepeat: 'repeat',
           backgroundSize: '512px 512px',
         }}

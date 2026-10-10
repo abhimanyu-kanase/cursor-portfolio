@@ -138,7 +138,7 @@ export const SelectedWorks: React.FC = () => {
                     className="absolute inset-0 rounded-2xl"
                     style={{
                       backgroundColor: 'rgba(20, 34, 16, 0.92)',
-                      backgroundImage: "url('/green-texture.webp')",
+                      backgroundImage: `url('${import.meta.env.BASE_URL}green-texture.webp')`,
                       backgroundRepeat: 'repeat',
                       backgroundSize: '512px 512px',
                     }}
@@ -148,7 +148,7 @@ export const SelectedWorks: React.FC = () => {
                   <div
                     className="absolute inset-0 rounded-2xl"
                     style={{
-                      backgroundImage: "url('/walnut-texture.webp')",
+                      backgroundImage: `url('${import.meta.env.BASE_URL}walnut-texture.webp')`,
                       backgroundRepeat: 'repeat',
                       backgroundSize: '512px 512px',
                       WebkitMaskImage:
