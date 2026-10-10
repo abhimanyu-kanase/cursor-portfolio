@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-exact: #182713;
+  --bg-rgb: 24, 39, 19;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  background-color: #182713;
+  background-image: 
+    radial-gradient(circle at 50% 25%, rgba(68, 102, 50, 0.28) 0%, rgba(20, 34, 16, 0.65) 55%, rgba(10, 18, 8, 0.94) 100%),
+    url('/green-texture.webp');
+  background-repeat: no-repeat, repeat;
+  background-size: 100% 100vh, 512px 512px;
+  background-attachment: fixed, fixed;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar with Walnut & Gold Accents */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1c0f08;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(110, 71, 48, 0.55);
+  border: 1px solid rgba(230, 194, 128, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.65);
+}
+
+/* Luxury Tactile Fine-Grain Noise Overlay with Stucco Plaster Texture */
+.luxury-grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.07;
+  background-image: url('/green-texture.webp');
+  background-size: 512px 512px;
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
+}
+
+/* Tactile Surface Texture for Cards (Deep Forest Green + Walnut Wood Warmth + Green Plaster Texture) */
+.tactile-card {
+  background-color: rgba(20, 34, 16, 0.90);
+  background-image: radial-gradient(circle at 12% 18%, rgba(77, 50, 33, 0.35) 0%, transparent 65%),
+                    url('/green-texture.webp');
+  background-repeat: no-repeat, repeat;
+  background-size: 100% 100%, 512px 512px;
+}
+
+
+/* Custom luxury glass / border utilities with Gold & Forest */
+.glass-panel {
+  background: rgba(20, 34, 16, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(230, 194, 128, 0.22);
+}
+
+.glass-pill {
+  background: rgba(14, 24, 11, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(230, 194, 128, 0.25);
+}
+
+.glass-nav-pill {
+  background: rgba(18, 30, 15, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(230, 194, 128, 0.35);
+  box-shadow: 0 12px 36px -10px rgba(10, 18, 8, 0.85), 0 0 1px 1px rgba(230, 194, 128, 0.2) inset;
+}
+
+.text-stroke-gold {
+  -webkit-text-stroke: 1px rgba(230, 194, 128, 0.5);
+  color: transparent;
+}
