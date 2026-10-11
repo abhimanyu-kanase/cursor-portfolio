@@ -471,4 +471,444 @@ export const projectsData: ProjectDetail[] = [
       },
     ],
   },
+  {
+    slug: 'laser-trimming-platinum-sensors',
+    number: '06',
+    title: 'Choosing Nominal Correction for Laser Trimming of Platinum Sensors',
+    subtitle: 'Physics-Based Mathematical Modeling & Temporal Validation Across Industrial Cells',
+    client: 'Precision Sensor Manufacturing & Quality Engineering',
+    category: 'Physics Modeling & Quality Optimization',
+    year: '2023',
+    status: 'Production Validated',
+    liveDemoUrl: 'https://github.com/abhimanyu-kanase',
+    githubUrl: 'https://github.com/abhimanyu-kanase',
+    shortDescription:
+      'Served as project lead for a 5-member team delivering physics-based forward and reverse mathematical modeling for platinum sensor laser trimming. Achieved 98.3% production coverage and reduced projected error rates across 9 configuration cells.',
+    overview: [
+      'Served as project lead for a 5-member multidisciplinary engineering team, coordinating workstreams, critical path dependencies, and Agile delivery across all 7 project phases in Jira.',
+      'Formulated an innovative physics-based correction methodology combining forward calibration simulation with reverse nominal prediction to optimize precision laser trimming of platinum thin-film temperature sensors.',
+      'Applied rigorous temporal cross-validation across 9 distinct production configuration cells, demonstrating that the calibrated nominal correction model consistently outperformed alternatives in 6 of 9 cells.',
+      'Delivered a validated, cost-relevant production pipeline achieving 98.3% coverage of live production orders, directly supporting lower rework costs and tighter sensor tolerance distributions.',
+    ],
+    keyOutcomes: [
+      {
+        metric: '98.3%',
+        label: 'Production Order Coverage',
+        description: 'Comprehensive coverage verified across active manufacturing order batches.',
+      },
+      {
+        metric: '5 Members',
+        label: 'Team Leadership',
+        description: 'Coordinated Agile sprints, task dependencies, and Jira tracking on schedule.',
+      },
+      {
+        metric: '7 Phases',
+        label: 'End-to-End Delivery',
+        description: 'Led all milestones from exploratory physics modeling through deployment.',
+      },
+      {
+        metric: '6 of 9',
+        label: 'Configuration Cells Outperformed',
+        description: 'Persistence outperformed baseline trimming approaches via temporal validation.',
+      },
+    ],
+    architectureHighlights: [
+      {
+        title: 'Forward & Reverse Physics-Based Modeling',
+        description:
+          'Formulated coupled mathematical representations linking sensor geometry, resistance shifts, and laser ablation dynamics to calculate precise cut depths.',
+      },
+      {
+        title: 'Temporal Cross-Validation Protocol',
+        description:
+          'Validated model robustness against chronological production drift rather than random splits, preventing lookahead leakage and ensuring shop-floor stability.',
+      },
+      {
+        title: 'Agile Team & Quality Governance',
+        description:
+          'Managed Jira sprint backlogs, stakeholder reviews, and documentation for strict industrial quality compliance and reproducible batch processing.',
+      },
+      {
+        title: 'Tolerance Band & Scrap Optimization',
+        description:
+          'Tightened post-trimming resistance distributions, directly decreasing industrial rework hours and material scrap expenditures.',
+      },
+    ],
+    tags: ['Python', 'Mathematical Modeling', 'Agile/Jira', 'Temporal Validation', 'Quality Engineering', 'Sensors'],
+    gallery: [
+      {
+        title: 'Laser Trimming Physics Schema',
+        subtitle: 'Sensor ablation geometry and thin-film resistance shift calculation',
+        tag: 'Physics Blueprint',
+        description:
+          'Mathematical flow diagram depicting thermal and geometric shifts during pulse ablation and current path constriction.',
+      },
+      {
+        title: 'Temporal Validation Heatmap',
+        subtitle: 'Comparative error rate performance across 9 manufacturing cells',
+        tag: 'Validation Metric',
+        description:
+          'Performance matrix illustrating error reduction across chronologically separated production batches.',
+      },
+      {
+        title: 'Resistance Tolerance Distribution',
+        subtitle: 'Pre-trim vs. post-trim nominal distribution shift curve',
+        tag: 'Quality Telemetry',
+        description:
+          'Statistical distribution comparison confirming tightened standard deviation and lower scrap rates.',
+      },
+    ],
+  },
+  {
+    slug: 'nl-data-query-api',
+    number: '07',
+    title: 'Natural Language Data Query API (FastAPI + LangGraph + Docker)',
+    subtitle: 'Autonomous Natural Language to SQL/Data Tool Routing with Privacy Governance',
+    client: 'Autonomous API Infrastructure & Data Interfaces',
+    category: 'Microservices & LLM Agents',
+    year: '2024',
+    status: 'Containerized Microservice',
+    liveDemoUrl: 'https://github.com/abhimanyu-kanase',
+    githubUrl: 'https://github.com/abhimanyu-kanase',
+    shortDescription:
+      'Built a containerized FastAPI microservice with LangGraph tool routing that translates natural language queries into structured extractions at ~2–4s response time with Pydantic validation and privacy-aware data handling.',
+    overview: [
+      'Architected a production-ready asynchronous FastAPI microservice allowing business users to interrogate structured datasets using unconstrained natural language prompts.',
+      'Constructed a specialized LangGraph agent with 2 automated tool-call routing functions, safely mapping arbitrary user inquiries into structured queries with governance filters.',
+      'Enforced end-to-end data privacy by identifying and tokenizing sensitive fields at the API boundary, guaranteeing strict compliance with data minimization principles.',
+      'Packaged the complete microservice within Docker and Docker Compose, incorporating GitHub Actions CI/CD pipelines with automated unit testing and Pydantic v2 payload schema verification.',
+    ],
+    keyOutcomes: [
+      {
+        metric: '~2–4s',
+        label: 'Average Response Time',
+        description: 'Sub-second tool resolution and fast LLM synthesis across 50+ benchmark test queries.',
+      },
+      {
+        metric: '1,000+',
+        label: 'Structured Rows Queried',
+        description: 'Automated retrieval across structured tabular datasets without manual SQL drafting.',
+      },
+      {
+        metric: '0 Errors',
+        label: 'Malformed Payloads',
+        description: 'Strict Pydantic schema validation eliminated invalid API request structures.',
+      },
+      {
+        metric: '100%',
+        label: 'Containerized CI/CD',
+        description: 'Deterministic builds and reproducible deployments with Docker and GitHub Actions.',
+      },
+    ],
+    architectureHighlights: [
+      {
+        title: 'LangGraph Tool-Calling Agent',
+        description:
+          'Orchestrates dynamic tool selection between schema introspection, data retrieval, and summary generation with cyclic state persistence.',
+      },
+      {
+        title: 'Privacy-Preserving Gateway',
+        description:
+          'Pre-filters sensitive PII fields and applies redaction policies prior to passing prompts to language models, ensuring strict data governance.',
+      },
+      {
+        title: 'Asynchronous FastAPI Architecture',
+        description:
+          'Utilizes non-blocking async Python endpoints with connection pooling and Pydantic validation for high-concurrency query execution.',
+      },
+      {
+        title: 'Dockerized Microservice Topology',
+        description:
+          'Encapsulates dependencies into lightweight OCI containers for multi-environment cloud portability with zero configuration drift.',
+      },
+    ],
+    tags: ['FastAPI', 'LangGraph', 'Docker', 'Pydantic', 'REST API', 'Python', 'CI/CD', 'Privacy AI'],
+    gallery: [
+      {
+        title: 'Microservice Request Topology',
+        subtitle: 'Client prompt to Pydantic validation, LangGraph tool dispatch, and JSON response',
+        tag: 'Service Topology',
+        description:
+          'End-to-end trace diagram depicting request flow through security, agent routing, and data layer.',
+      },
+      {
+        title: 'LangGraph Tool-Call Router',
+        subtitle: 'Cyclic graph state and tool-execution nodes',
+        tag: 'Agent Architecture',
+        description:
+          'Graph logic showcasing decision branching between metadata exploration and targeted query execution.',
+      },
+      {
+        title: 'Docker & CI/CD Pipeline Blueprint',
+        subtitle: 'Automated test suite, linting, and container build automation',
+        tag: 'DevOps Pipeline',
+        description:
+          'Continuous integration workflow from Git commit to automated test execution and container artifact registry.',
+      },
+    ],
+  },
+  {
+    slug: 'spotify-streaming-analytics',
+    number: '08',
+    title: 'Spotify Streaming Analytics Dashboard',
+    subtitle: 'Cloud Lakehouse Analytics with AWS S3, Athena, BigQuery & Looker Studio',
+    client: 'Music Intelligence & Cloud Analytics',
+    category: 'Cloud Lakehouse & Business Intelligence',
+    year: '2023',
+    status: 'Production Analytics',
+    liveDemoUrl: 'https://github.com/abhimanyu-kanase',
+    githubUrl: 'https://github.com/abhimanyu-kanase',
+    shortDescription:
+      'Built a unified cloud analytics layer consolidating 10,000+ streaming records across AWS S3, Athena, and BigQuery. Conducted EDA in Python and deployed interactive Looker Studio dashboards surfacing 5+ key business insights.',
+    overview: [
+      'Engineered a scalable multi-cloud analytics pipeline unifying 10,000+ music streaming records sourced across AWS S3 object storage and Google BigQuery analytical warehouses.',
+      'Leveraged serverless SQL queries in Amazon Athena to transform and aggregate partitioned parquet datasets without managing physical infrastructure.',
+      'Conducted in-depth exploratory data analysis (EDA) in Python, isolating 5+ high-impact trends covering listening retention, skip rate dynamics, and regional audio feature variations.',
+      'Designed and deployed an interactive Looker Studio dashboard adopted by stakeholders for continuous monitoring of track velocity and genre performance.',
+    ],
+    keyOutcomes: [
+      {
+        metric: '10,000+',
+        label: 'Streaming Records',
+        description: 'Consolidated across disparate cloud storage buckets and analytical warehouses.',
+      },
+      {
+        metric: '3 Sources',
+        label: 'Unified Data Ingestion',
+        description: 'Seamless integration spanning AWS S3, Athena serverless queries, and BigQuery tables.',
+      },
+      {
+        metric: '5+ Insights',
+        label: 'Actionable Discoveries',
+        description: 'Identified key inflection points in listener retention and genre distribution trends.',
+      },
+      {
+        metric: '4+ Views',
+        label: 'Executive Dashboards',
+        description: 'Interactive Looker Studio visualisations serving automated weekly stakeholder updates.',
+      },
+    ],
+    architectureHighlights: [
+      {
+        title: 'Hybrid Cloud Analytical Ingestion',
+        description:
+          'Connected AWS S3 partitioned parquet layers with Google BigQuery federated queries for unified cross-cloud querying.',
+      },
+      {
+        title: 'Serverless Athena Query Layer',
+        description:
+          'Executed low-latency ad-hoc SQL transformations directly over compressed columnar data with zero warehouse idle costs.',
+      },
+      {
+        title: 'Python Feature Exploration & Mining',
+        description:
+          'Applied statistical distributions, correlation matrices, and time-series aggregations to raw audio telemetry.',
+      },
+      {
+        title: 'Automated Looker Studio Visualisation',
+        description:
+          'Configured automated cache refresh schedules and parameterized drill-downs for operational stakeholders.',
+      },
+    ],
+    tags: ['AWS S3', 'Amazon Athena', 'Google BigQuery', 'Looker Studio', 'Python EDA', 'SQL', 'Cloud Analytics'],
+    gallery: [
+      {
+        title: 'Cloud Lakehouse Architecture',
+        subtitle: 'S3 storage to Athena and BigQuery federated warehouse layer',
+        tag: 'Data Architecture',
+        description:
+          'Architectural diagram illustrating data staging, serverless query execution, and dashboard connection.',
+      },
+      {
+        title: 'Audio Feature Correlation Matrix',
+        subtitle: 'Valence, danceability, energy, and acousticness vs. stream counts',
+        tag: 'Exploratory EDA',
+        description:
+          'Statistical correlation heatmap identifying attributes driving viral music longevity.',
+      },
+      {
+        title: 'Looker Studio Executive Dashboard',
+        subtitle: 'Interactive streaming velocity, artist benchmarks, and regional heatmaps',
+        tag: 'BI Dashboard',
+        description:
+          'Production visual interface displaying live streaming metrics, genre share, and temporal trends.',
+      },
+    ],
+  },
+  {
+    slug: 'netflix-data-analysis-polars',
+    number: '09',
+    title: 'Netflix Data Analysis (Polars + Python)',
+    subtitle: 'High-Performance Multithreaded Exploratory Data Science & Visual Analytics',
+    client: 'Media Analytics & Exploratory Data Science',
+    category: 'High-Performance Data Science',
+    year: '2023',
+    status: 'Analytical Case Study',
+    liveDemoUrl: 'https://github.com/abhimanyu-kanase',
+    githubUrl: 'https://github.com/abhimanyu-kanase',
+    shortDescription:
+      'Leveraged high-performance multithreaded Polars and Python to clean, validate, and analyze global catalog data. Discovered structural trends across genre clusters, content ratings, and multi-year release strategies.',
+    overview: [
+      'Established a rigorous data validation and exploratory pipeline utilizing Polars—a blazing-fast Rust-powered DataFrame library—achieving 10x-20x speedups over traditional Pandas pipelines.',
+      'Systematically audited missing values, anomalous text patterns, and categorical inconsistencies to construct a pristine analytical baseline across global movie and TV catalog entries.',
+      'Uncovered strategic shifts in content acquisition, country-of-origin distributions, and runtime dynamics through structured multivariate statistical analysis.',
+      'Synthesized complex findings into an intuitive visual story featuring clean thematic graphics, comparative distribution plots, and executive summary takeaways.',
+    ],
+    keyOutcomes: [
+      {
+        metric: '10x–20x',
+        label: 'Processing Acceleration',
+        description: 'Polars parallel query engine outperformed traditional Pandas execution on identical workloads.',
+      },
+      {
+        metric: '8,800+',
+        label: 'Titles Categorized',
+        description: 'Standardized comprehensive catalog entries spanning movies, TV shows, and multi-season releases.',
+      },
+      {
+        metric: '100%',
+        label: 'Data Integrity Pass',
+        description: 'Systematic imputation and null resolution across casting, release year, and country metadata.',
+      },
+      {
+        metric: '6 Deep Dives',
+        label: 'Analytical Narratives',
+        description: 'Explored genre diversification, international localization, and maturity rating patterns.',
+      },
+    ],
+    architectureHighlights: [
+      {
+        title: 'Rust-Powered Polars Ingestion',
+        description:
+          'Leveraged lazy evaluation, query optimization, and multicore parallel execution for ultra-fast transformation of in-memory dataframes.',
+      },
+      {
+        title: 'Data Hygiene & Quality Sanitization',
+        description:
+          'Engineered custom parsing routines for nested comma-delimited directors, cast arrays, and dual-unit runtimes.',
+      },
+      {
+        title: 'Temporal Trend & Genre Decomposition',
+        description:
+          'Analyzed the longitudinal evolution of production volume from 1940 through modern streaming decades.',
+      },
+      {
+        title: 'Executive Visual Storytelling',
+        description:
+          'Formatted analytical outputs into presentation-grade charts with color palettes matching brand guidelines.',
+      },
+    ],
+    tags: ['Polars', 'Python', 'Exploratory Data Analysis', 'Data Visualisation', 'Data Cleaning', 'Statistical Modeling'],
+    gallery: [
+      {
+        title: 'Polars Lazy Query Execution Graph',
+        subtitle: 'Predicate pushdown, projection optimization, and parallel chunk execution',
+        tag: 'Pipeline Optimization',
+        description:
+          'Execution plan visualizing Polars lazy frame transformations and multicore processing.',
+      },
+      {
+        title: 'International Content Distribution Map',
+        subtitle: 'Regional licensing vs. in-house production volume',
+        tag: 'Content Strategy',
+        description:
+          'Choropleth visual illustrating global expansion of localized film and episodic production.',
+      },
+      {
+        title: 'Genre & Runtime Trajectory Analysis',
+        subtitle: 'Shifting dominance of genres and episodic runtimes over time',
+        tag: 'Visual Analytics',
+        description:
+          'Longitudinal trend chart tracing the expansion of international dramas and docuseries.',
+      },
+    ],
+  },
+  {
+    slug: 'nike-website-ui-clone',
+    number: '10',
+    title: 'Nike Website UI Clone (Personal Practice Project)',
+    subtitle: 'High-Fidelity Component Architecture, Design Tokens & Interactive Prototypes',
+    client: 'Digital Product Design & UI/UX Engineering',
+    category: 'UI/UX Systems & Interface Craft',
+    year: '2023',
+    status: 'High-Fidelity Prototype',
+    liveDemoUrl: 'https://github.com/abhimanyu-kanase',
+    githubUrl: 'https://github.com/abhimanyu-kanase',
+    shortDescription:
+      'Engineered a high-fidelity e-commerce experience in Figma, analyzing and replicating component tokens, visual hierarchy, fluid spacing, and dynamic multi-state interactive product cards.',
+    overview: [
+      'Engineered a pixel-perfect, high-fidelity recreation of the Nike digital commerce interface as an intensive study into modern design system architecture and human-computer interaction.',
+      'Formulated an atomic design hierarchy featuring scalable design tokens for typography scales, color contrast ratios, elevation shadows, and modular 8pt grid spacing.',
+      'Crafted complex multi-state component variants including interactive navigation flyouts, responsive product cards, hover overlays, and animated cart micro-interactions.',
+      'Synthesized human-centered UX principles to optimize customer checkout velocity, product discoverability, and visual storytelling.',
+    ],
+    keyOutcomes: [
+      {
+        metric: '100%',
+        label: 'Design System Fidelity',
+        description: 'Meticulous recreation of typography scale, spacing grids, and component tokens.',
+      },
+      {
+        metric: '25+',
+        label: 'Interactive Components',
+        description: 'Engineered reusable atomic variants with hover, active, and focus states.',
+      },
+      {
+        metric: '8pt Grid',
+        label: 'Modular Spatial System',
+        description: 'Consistent spatial harmony across all desktop and mobile breakpoint frames.',
+      },
+      {
+        metric: 'High',
+        label: 'Prototype Realism',
+        description: 'Interactive smart-animate micro-interactions for seamless simulated e-commerce flows.',
+      },
+    ],
+    architectureHighlights: [
+      {
+        title: 'Atomic Design Token Hierarchy',
+        description:
+          'Organized primitives into global color tokens, typography styles, and responsive auto-layout constraints.',
+      },
+      {
+        title: 'Component Variant Architecture',
+        description:
+          'Configured boolean properties, variant matrices, and nested instances in Figma for modular component reusability.',
+      },
+      {
+        title: 'Visual Hierarchy & Commercial Scannability',
+        description:
+          'Structured bold editorial headlines, focal product photography, and high-contrast call-to-action buttons.',
+      },
+      {
+        title: 'Micro-Interactions & Motion Design',
+        description:
+          'Simulated realistic user journeys with easing curves, slide-over modals, and tactile button states.',
+      },
+    ],
+    tags: ['Figma', 'UI/UX Design', 'Design Systems', 'Design Tokens', 'Interactive Prototyping', 'E-Commerce UX'],
+    gallery: [
+      {
+        title: 'Atomic Design System & Token Library',
+        subtitle: 'Color palettes, typographic scale, icons, and spatial grid definitions',
+        tag: 'Design System',
+        description:
+          'Master token sheet illustrating foundation variables and component building blocks.',
+      },
+      {
+        title: 'Interactive Product Grid & Card Variants',
+        subtitle: 'Hover states, size selector chips, colorway toggles, and price tags',
+        tag: 'Component Matrix',
+        description:
+          'Detailed component sheet demonstrating multi-state variant architecture.',
+      },
+      {
+        title: 'High-Fidelity Checkout & Shopping Bag Flow',
+        subtitle: 'Slide-over cart drawer, itemized pricing, and streamlined checkout',
+        tag: 'UX Interaction',
+        description:
+          'End-to-end interactive flow wireframe modeling friction-free purchase conversion.',
+      },
+    ],
+  },
 ];

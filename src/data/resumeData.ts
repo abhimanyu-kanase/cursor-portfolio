@@ -203,7 +203,7 @@ export const resumeData: ResumeData = {
     {
       title: 'Music Recommendation Engine using BERT (NLP / Music AI)',
       techStack: 'BERT, HuggingFace, PyTorch, Python, Data Mining',
-      projectSlug: 'music-recommendation-engine-bert',
+      projectSlug: 'bert-music-recommendation',
       bullets: [
         'Automated genre prediction across 52 categories, measured by precision/recall/F1 benchmarking, by fine-tuning a BERT-large Generative AI model on 10,000+ track descriptions.',
         'Delivered clear, decision-ready findings, measured by consistent evaluation metrics presented across development milestones, by building structured analyses and progress presentations.',
@@ -213,6 +213,7 @@ export const resumeData: ResumeData = {
     {
       title: 'Choosing Nominal Correction for Laser Trimming of Platinum Sensors',
       techStack: 'Agile/Jira, Python Modeling, Temporal Validation, Quality Engineering',
+      projectSlug: 'laser-trimming-platinum-sensors',
       bullets: [
         'Served as project lead for a 5-member team, measured by on-time delivery across all 7 project phases, by coordinating tasks, dependencies, and Agile workflows in Jira.',
         'Reduced projected production error rates, measured by validated performance across iterative test cycles, by defining a final physics-based correction method through forward and reverse modelling — directly supporting lower rework costs and improved product quality.',
@@ -223,6 +224,7 @@ export const resumeData: ResumeData = {
     {
       title: 'Natural Language Data Query API (FastAPI Microservice + LangGraph + Docker)',
       techStack: 'FastAPI, LangGraph, Docker, Pydantic, REST API',
+      projectSlug: 'nl-data-query-api',
       bullets: [
         'Built a FastAPI microservice with Pydantic-validated endpoints processing 50+ test queries at ~2–4 second average response time, automating natural language data extraction from a 1,000+ row structured dataset.',
         'Implemented a LangGraph agent with 2 automated tool-call routing functions, replacing manual query handling with a fully automated, governance-aware data retrieval workflow.',
@@ -234,6 +236,7 @@ export const resumeData: ResumeData = {
     {
       title: 'Spotify Streaming Analytics Dashboard',
       techStack: 'AWS S3, Athena, BigQuery, Looker Studio, Python EDA',
+      projectSlug: 'spotify-streaming-analytics',
       bullets: [
         'Built a unified analytics layer for business decision-making, measured by successful consolidation of 10,000+ records across 3 sources, by integrating AWS S3, Athena, and BigQuery.',
         'Surfaced actionable business insights, measured by 5+ documented findings on audience and genre trends, by conducting structured EDA in Python.',
@@ -243,6 +246,7 @@ export const resumeData: ResumeData = {
     {
       title: 'Netflix Data Analysis (Polars + Python)',
       techStack: 'Polars, Python, Exploratory Data Analysis, Data Visualisation',
+      projectSlug: 'netflix-data-analysis-polars',
       bullets: [
         'Established a reliable analytical foundation by cleaning and validating the dataset, identifying and resolving missing values and data quality issues with Polars and Python.',
         'Applied structured data science analysis techniques to identify actionable content trends across genre distribution, content ratings, and release-year data.',
@@ -253,6 +257,7 @@ export const resumeData: ResumeData = {
     {
       title: 'Nike Website UI Clone (Personal Practice Project)',
       techStack: 'Figma, High-Fidelity UI/UX, Design Systems, Component Hierarchy',
+      projectSlug: 'nike-website-ui-clone',
       bullets: [
         'Recreated the Nike website interface in Figma as a personal UI/UX practice project by analyzing and replicating its component structure, spacing, visual hierarchy, and page layout for a high-fidelity design.',
       ],

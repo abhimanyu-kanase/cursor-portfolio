@@ -76,67 +76,75 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onSelectProject })
               </div>
             </div>
 
-            {/* Bottom Row: Full Horizontal Spread of Description + Tags */}
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-              {/* Distinctive Animated Description Wrapper: Walnut-to-Green plaster transition triggers on hover */}
-              <div className="relative group/desc max-w-5xl cursor-pointer p-4 -mx-4 rounded-2xl transition-all duration-300 overflow-hidden border border-transparent group-hover:border-[#5c3a25]/75 hover:!border-[#ffd700]/70 hover:shadow-[0_12px_32px_rgba(10,18,8,0.7),0_0_24px_rgba(77,50,33,0.45)]">
-                {/* Walnut-to-Green Textured Background (Active ONLY on Hover) */}
+            {/* Full Horizontal Spread of Description */}
+            <div className="relative group/desc w-full cursor-pointer p-4 -mx-4 sm:p-5 sm:-mx-5 rounded-2xl transition-all duration-300 overflow-hidden border border-transparent group-hover:border-[#5c3a25]/75 hover:!border-[#ffd700]/70 hover:shadow-[0_12px_32px_rgba(10,18,8,0.7),0_0_24px_rgba(77,50,33,0.45)]">
+              {/* Walnut-to-Green Textured Background (Active ONLY on Hover across full card width) */}
+              <div
+                className="absolute inset-0 pointer-events-none rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                aria-hidden="true"
+              >
+                {/* Green plaster texture base matching the background */}
                 <div
-                  className="absolute inset-0 pointer-events-none rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  aria-hidden="true"
-                >
-                  {/* Green plaster texture base matching the background */}
-                  <div
-                    className="absolute inset-0 rounded-2xl"
-                    style={{
-                      backgroundColor: 'rgba(20, 34, 16, 0.92)',
-                      backgroundImage: `url('${import.meta.env.BASE_URL}green-texture.webp')`,
-                      backgroundRepeat: 'repeat',
-                      backgroundSize: '512px 512px',
-                    }}
-                  />
+                  className="absolute inset-0 rounded-2xl"
+                  style={{
+                    backgroundColor: 'rgba(20, 34, 16, 0.92)',
+                    backgroundImage: `url('${import.meta.env.BASE_URL}green-texture.webp')`,
+                    backgroundRepeat: 'repeat',
+                    backgroundSize: '512px 512px',
+                  }}
+                />
 
-                  {/* Walnut plaster texture overlay on the left fading into the green texture on the right */}
-                  <div
-                    className="absolute inset-0 rounded-2xl"
-                    style={{
-                      backgroundImage: `url('${import.meta.env.BASE_URL}walnut-texture.webp')`,
-                      backgroundRepeat: 'repeat',
-                      backgroundSize: '512px 512px',
-                      WebkitMaskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.94) 15%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0) 90%)',
-                      maskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.94) 15%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0) 90%)',
-                    }}
-                  />
+                {/* Walnut plaster texture overlay on the left fading into the green texture on the right */}
+                <div
+                  className="absolute inset-0 rounded-2xl"
+                  style={{
+                    backgroundImage: `url('${import.meta.env.BASE_URL}walnut-texture.webp')`,
+                    backgroundRepeat: 'repeat',
+                    backgroundSize: '512px 512px',
+                    WebkitMaskImage:
+                      'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.94) 15%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0) 90%)',
+                    maskImage:
+                      'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.94) 15%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0) 90%)',
+                  }}
+                />
 
-                  {/* Ambient warm atmospheric walnut glow on the left of the description */}
-                  <div
-                    className="absolute inset-0 rounded-2xl"
-                    style={{
-                      background:
-                        'linear-gradient(to right, rgba(77, 50, 33, 0.55) 0%, rgba(54, 34, 22, 0.28) 28%, transparent 62%)',
-                    }}
-                  />
-                </div>
-
-                <p className="relative z-10 font-sans text-[18px] sm:text-[20px] text-[#faf8f3] group-hover:text-[#fffff8] group-hover:drop-shadow-[0_2px_12px_rgba(230,194,128,0.35)] leading-relaxed font-light transition-all duration-300 group-hover/desc:drop-shadow-[0_2px_14px_rgba(230,194,128,0.55)]">
-                  {proj.shortDescription}
-                </p>
-                {/* Luminous Light-Beam Sweep Line in Radiant Gold */}
-                <div className="relative z-10 h-[2px] w-0 group-hover/desc:w-full bg-gradient-to-r from-[#ffd700] via-[#f7de9c] to-transparent transition-all duration-500 ease-out mt-3 rounded-full opacity-0 group-hover/desc:opacity-100 shadow-[0_0_12px_#ffd700]" />
+                {/* Ambient warm atmospheric walnut glow on the left of the description */}
+                <div
+                  className="absolute inset-0 rounded-2xl"
+                  style={{
+                    background:
+                      'linear-gradient(to right, rgba(77, 50, 33, 0.55) 0%, rgba(54, 34, 22, 0.28) 28%, transparent 62%)',
+                  }}
+                />
               </div>
 
-              {/* Distinctive Kinetic Animated Keywords / Tags that Pop in Radiant Gold */}
-              <div className="flex flex-wrap gap-2.5 shrink-0">
+              <p className="relative z-10 font-sans text-[19px] sm:text-[21px] lg:text-[23px] text-[#faf8f3] group-hover:text-[#fffff8] group-hover:drop-shadow-[0_2px_12px_rgba(230,194,128,0.35)] leading-[1.65] font-light transition-all duration-300 group-hover/desc:drop-shadow-[0_2px_14px_rgba(230,194,128,0.55)]">
+                {proj.shortDescription}
+              </p>
+              {/* Luminous Light-Beam Sweep Line in Radiant Gold */}
+              <div className="relative z-10 h-[2px] w-0 group-hover/desc:w-full bg-gradient-to-r from-[#ffd700] via-[#f7de9c] to-transparent transition-all duration-500 ease-out mt-3.5 rounded-full opacity-0 group-hover/desc:opacity-100 shadow-[0_0_12px_#ffd700]" />
+            </div>
+
+            {/* Bottom Stacked Keywords Strip */}
+            <div className="mt-6 pt-5 border-t border-[#3e5630]/50 group-hover:border-[#e6c280]/30 transition-colors flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="font-mono text-xs uppercase tracking-[0.22em] text-[#e6c280]/80 mr-1 hidden sm:inline-flex items-center gap-1.5 font-semibold">
+                  Stack & Methods:
+                </span>
                 {proj.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="group/tag inline-flex items-center px-4 py-1.5 rounded-full bg-[#0e180b]/85 group-hover:bg-[#142210] border border-[#3e5630]/60 font-mono text-[14px] sm:text-[15px] text-[#faf8f3] font-medium transition-all duration-200 ease-out cursor-pointer hover:scale-110 hover:-translate-y-1.5 hover:bg-gradient-to-r hover:from-[#ffd700] hover:to-[#e6c280] hover:text-[#1c0f08] hover:font-bold hover:border-[#ffd700] hover:shadow-[0_0_25px_rgba(255,215,0,0.85),0_8px_20px_rgba(10,18,8,0.7)] active:scale-95"
+                    className="group/tag inline-flex items-center px-4 py-1.5 rounded-full bg-[#0e180b]/85 group-hover:bg-[#142210] border border-[#3e5630]/60 font-mono text-[13px] sm:text-[14px] text-[#faf8f3] font-medium transition-all duration-200 ease-out cursor-pointer hover:scale-105 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-[#ffd700] hover:to-[#e6c280] hover:text-[#1c0f08] hover:font-bold hover:border-[#ffd700] hover:shadow-[0_0_25px_rgba(255,215,0,0.85),0_8px_20px_rgba(10,18,8,0.7)] active:scale-95"
                   >
                     <span>{tag}</span>
                   </span>
                 ))}
+              </div>
+
+              {/* Distinctive Detail Link Cue */}
+              <div className="hidden lg:flex items-center gap-2 font-mono text-xs text-[#e6c280] group-hover:text-[#ffd700] transition-colors">
+                <span className="tracking-wider uppercase text-[11px]">System Blueprint</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#ffd700]" />
               </div>
             </div>
           </div>
