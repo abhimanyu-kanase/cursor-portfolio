@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CharacterTrackerCanvas } from './CharacterTrackerCanvas';
 import { ArrowUpRight } from 'lucide-react';
-import { ResumeModal } from './ResumeModal';
 
 interface HeroProps {
   onEyeContactChange?: (isEyeContact: boolean) => void;
+  onOpenResume?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onEyeContactChange }) => {
-  const [isResumeOpen, setIsResumeOpen] = useState(false);
+export const Hero: React.FC<HeroProps> = ({ onEyeContactChange, onOpenResume }) => {
 
   return (
     <section
@@ -45,7 +44,14 @@ export const Hero: React.FC<HeroProps> = ({ onEyeContactChange }) => {
         <div className="flex items-center gap-4 sm:gap-5">
           {/* Resume: Radiant Gold with dark walnut typography */}
           <button
-            onClick={() => setIsResumeOpen(true)}
+            onClick={() => {
+              if (onOpenResume) {
+                onOpenResume();
+              } else {
+                window.location.hash = '#/resume';
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }
+            }}
             className="group px-8 sm:px-10 py-4 sm:py-4.5 rounded-full bg-gradient-to-r from-[#ffd700] via-[#f5d77f] to-[#e6c280] text-[#1c0f08] hover:to-[#ffd700] transition-all duration-200 font-sans font-bold text-sm sm:text-base md:text-lg shadow-[0_8px_32px_rgba(230,194,128,0.45)] flex items-center gap-2.5 hover:scale-105 active:scale-95 cursor-pointer hover:shadow-[0_12px_40px_rgba(255,215,0,0.65)]"
           >
             <span>Resume</span>
@@ -61,9 +67,6 @@ export const Hero: React.FC<HeroProps> = ({ onEyeContactChange }) => {
           </a>
         </div>
       </div>
-
-      {/* Resume Modal */}
-      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </section>
   );
 };

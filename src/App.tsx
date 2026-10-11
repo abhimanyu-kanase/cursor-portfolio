@@ -6,27 +6,36 @@ import { ArchitectureDeepDive } from './components/ArchitectureDeepDive';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { ProjectDetailPage } from './components/ProjectDetailPage';
+import { ResumePage } from './components/ResumePage';
 import { projectsData } from './data/projectsData';
 
-const parseProjectSlug = (): string | null => {
-  if (typeof window === 'undefined') return null;
+type RouteState =
+  | { type: 'home' }
+  | { type: 'resume' }
+  | { type: 'project'; slug: string };
+
+const parseCurrentRoute = (): RouteState => {
+  if (typeof window === 'undefined') return { type: 'home' };
   const hash = window.location.hash;
+  if (hash === '#/resume' || hash.startsWith('#/resume')) {
+    return { type: 'resume' };
+  }
   const match = hash.match(/^#\/project\/([a-zA-Z0-9_-]+)/);
   if (match) {
     const slug = match[1];
     const exists = projectsData.some((p) => p.slug === slug);
-    if (exists) return slug;
+    if (exists) return { type: 'project', slug };
   }
-  return null;
+  return { type: 'home' };
 };
 
 export const App: React.FC = () => {
   const [isEyeContact, setIsEyeContact] = useState<boolean>(true);
-  const [activeProjectSlug, setActiveProjectSlug] = useState<string | null>(parseProjectSlug);
+  const [currentRoute, setCurrentRoute] = useState<RouteState>(parseCurrentRoute);
 
   useEffect(() => {
     const handleHashChange = () => {
-      setActiveProjectSlug(parseProjectSlug());
+      setCurrentRoute(parseCurrentRoute());
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -39,13 +48,19 @@ export const App: React.FC = () => {
   }, []);
 
   const handleSelectProject = (slug: string) => {
-    setActiveProjectSlug(slug);
+    setCurrentRoute({ type: 'project', slug });
     window.location.hash = `#/project/${slug}`;
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
+  const handleOpenResume = () => {
+    setCurrentRoute({ type: 'resume' });
+    window.location.hash = '#/resume';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   const handleBackToPortfolio = () => {
-    setActiveProjectSlug(null);
+    setCurrentRoute({ type: 'home' });
     window.location.hash = '#works';
     setTimeout(() => {
       const worksEl = document.getElementById('works');
@@ -57,6 +72,12 @@ export const App: React.FC = () => {
     }, 60);
   };
 
+  const handleBackHome = () => {
+    setCurrentRoute({ type: 'home' });
+    window.location.hash = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-transparent text-[#faf8f3] selection:bg-[#e6c280] selection:text-[#182713] relative overflow-x-hidden">
       {/* Luxury Tactile Fine-Grain Noise Overlay */}
@@ -65,10 +86,15 @@ export const App: React.FC = () => {
       {/* Luxury Animated Custom Cursor */}
       <CustomCursor isEyeContact={isEyeContact} />
 
-      {activeProjectSlug ? (
+      {currentRoute.type === 'project' ? (
         <ProjectDetailPage
-          slug={activeProjectSlug}
+          slug={currentRoute.slug}
           onBack={handleBackToPortfolio}
+          onNavigateProject={handleSelectProject}
+        />
+      ) : currentRoute.type === 'resume' ? (
+        <ResumePage
+          onBack={handleBackHome}
           onNavigateProject={handleSelectProject}
         />
       ) : (
@@ -78,7 +104,10 @@ export const App: React.FC = () => {
 
           <main>
             {/* Hero Section with Interactive Gaze Core */}
-            <Hero onEyeContactChange={setIsEyeContact} />
+            <Hero
+              onEyeContactChange={setIsEyeContact}
+              onOpenResume={handleOpenResume}
+            />
 
             {/* Selected Works Section */}
             <SelectedWorks onSelectProject={handleSelectProject} />
