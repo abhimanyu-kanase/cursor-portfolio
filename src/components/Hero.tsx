@@ -5,9 +5,10 @@ import { ArrowUpRight, Compass } from 'lucide-react';
 interface HeroProps {
   onEyeContactChange?: (isEyeContact: boolean) => void;
   onOpenResume?: () => void;
+  onOpenContact?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onEyeContactChange, onOpenResume }) => {
+export const Hero: React.FC<HeroProps> = ({ onEyeContactChange, onOpenResume, onOpenContact }) => {
   const [isAuditOpen, setIsAuditOpen] = useState(false);
 
   return (
@@ -62,12 +63,19 @@ export const Hero: React.FC<HeroProps> = ({ onEyeContactChange, onOpenResume }) 
           </button>
 
           {/* Let's Talk */}
-          <a
-            href="#contact"
+          <button
+            onClick={() => {
+              if (onOpenContact) {
+                onOpenContact();
+              } else {
+                window.location.hash = '#/contact';
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }
+            }}
             className="group px-8 sm:px-10 py-4 sm:py-4.5 rounded-full bg-gradient-to-r from-[#380712]/92 via-[#4a0a18]/90 to-[#2a1a10]/92 hover:from-[#5a1020] hover:to-[#380712] border border-[#852238]/80 hover:border-[#ffd700] hover:shadow-[0_0_32px_rgba(133,34,56,0.6),0_0_16px_rgba(255,215,0,0.3)] text-[#fffff8] transition-all duration-200 font-sans font-semibold text-sm sm:text-base md:text-lg flex items-center gap-2.5 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md shadow-[0_8px_28px_rgba(56,7,18,0.55)]"
           >
             <span>Let's Talk</span>
-          </a>
+          </button>
         </div>
       </div>
 

@@ -7,11 +7,13 @@ import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { ProjectDetailPage } from './components/ProjectDetailPage';
 import { ResumePage } from './components/ResumePage';
+import { ContactPage } from './components/ContactPage';
 import { projectsData } from './data/projectsData';
 
 type RouteState =
   | { type: 'home' }
   | { type: 'resume' }
+  | { type: 'contact' }
   | { type: 'project'; slug: string };
 
 const parseCurrentRoute = (): RouteState => {
@@ -19,6 +21,9 @@ const parseCurrentRoute = (): RouteState => {
   const hash = window.location.hash;
   if (hash === '#/resume' || hash.startsWith('#/resume')) {
     return { type: 'resume' };
+  }
+  if (hash === '#/contact' || hash.startsWith('#/contact')) {
+    return { type: 'contact' };
   }
   const match = hash.match(/^#\/project\/([a-zA-Z0-9_-]+)/);
   if (match) {
@@ -56,6 +61,12 @@ export const App: React.FC = () => {
   const handleOpenResume = () => {
     setCurrentRoute({ type: 'resume' });
     window.location.hash = '#/resume';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const handleOpenContact = () => {
+    setCurrentRoute({ type: 'contact' });
+    window.location.hash = '#/contact';
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
@@ -97,16 +108,22 @@ export const App: React.FC = () => {
           onBack={handleBackHome}
           onNavigateProject={handleSelectProject}
         />
+      ) : currentRoute.type === 'contact' ? (
+        <ContactPage
+          onBack={handleBackHome}
+          onOpenResume={handleOpenResume}
+        />
       ) : (
         <>
           {/* Top Luxury Navigation */}
-          <Navbar />
+          <Navbar onOpenContact={handleOpenContact} />
 
           <main>
             {/* Hero Section with Interactive Gaze Core */}
             <Hero
               onEyeContactChange={setIsEyeContact}
               onOpenResume={handleOpenResume}
+              onOpenContact={handleOpenContact}
             />
 
             {/* Selected Works Section */}
