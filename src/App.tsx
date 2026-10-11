@@ -1,13 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SelectedWorks } from './components/SelectedWorks';
 import { ArchitectureDeepDive } from './components/ArchitectureDeepDive';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
+import { ProjectDetailPage } from './components/ProjectDetailPage';
+import { projectsData } from './data/projectsData';
+
+const parseProjectSlug = (): string | null => {
+  if (typeof window === 'undefined') return null;
+  const hash = window.location.hash;
+  const match = hash.match(/^#\/project\/([a-zA-Z0-9_-]+)/);
+  if (match) {
+    const slug = match[1];
+    const exists = projectsData.some((p) => p.slug === slug);
+    if (exists) return slug;
+  }
+  return null;
+};
 
 export const App: React.FC = () => {
   const [isEyeContact, setIsEyeContact] = useState<boolean>(true);
+  const [activeProjectSlug, setActiveProjectSlug] = useState<string | null>(parseProjectSlug);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setActiveProjectSlug(parseProjectSlug());
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleHashChange);
+    };
+  }, []);
+
+  const handleSelectProject = (slug: string) => {
+    setActiveProjectSlug(slug);
+    window.location.hash = `#/project/${slug}`;
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const handleBackToPortfolio = () => {
+    setActiveProjectSlug(null);
+    window.location.hash = '#works';
+    setTimeout(() => {
+      const worksEl = document.getElementById('works');
+      if (worksEl) {
+        worksEl.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 60);
+  };
 
   return (
     <div className="min-h-screen bg-transparent text-[#faf8f3] selection:bg-[#e6c280] selection:text-[#182713] relative overflow-x-hidden">
@@ -17,19 +65,29 @@ export const App: React.FC = () => {
       {/* Luxury Animated Custom Cursor */}
       <CustomCursor isEyeContact={isEyeContact} />
 
-      {/* Top Luxury Navigation */}
-      <Navbar />
+      {activeProjectSlug ? (
+        <ProjectDetailPage
+          slug={activeProjectSlug}
+          onBack={handleBackToPortfolio}
+          onNavigateProject={handleSelectProject}
+        />
+      ) : (
+        <>
+          {/* Top Luxury Navigation */}
+          <Navbar />
 
-      <main>
-        {/* Hero Section with Interactive Gaze Core */}
-        <Hero onEyeContactChange={setIsEyeContact} />
+          <main>
+            {/* Hero Section with Interactive Gaze Core */}
+            <Hero onEyeContactChange={setIsEyeContact} />
 
-        {/* Selected Works Section */}
-        <SelectedWorks />
+            {/* Selected Works Section */}
+            <SelectedWorks onSelectProject={handleSelectProject} />
 
-        {/* Technical Architecture Deep Dive */}
-        <ArchitectureDeepDive />
-      </main>
+            {/* Technical Architecture Deep Dive */}
+            <ArchitectureDeepDive />
+          </main>
+        </>
+      )}
 
       {/* Studio Footer */}
       <Footer />
