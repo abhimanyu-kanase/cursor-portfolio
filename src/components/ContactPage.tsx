@@ -22,6 +22,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { contactInfo, inquiryTopics, StoredInquiry } from '../data/contactData';
+import { dispatchContactEnquiry, DispatchResult } from '../services/emailService';
 
 interface ContactPageProps {
   onBack: () => void;
@@ -37,6 +38,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onBack, onOpenResume }
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'submitted' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [submittedInquiry, setSubmittedInquiry] = useState<StoredInquiry | null>(null);
+  const [dispatchResult, setDispatchResult] = useState<DispatchResult | null>(null);
 
   // Clipboard Feedback States
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -77,7 +79,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onBack, onOpenResume }
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!senderName.trim()) {
       setErrorMessage('Please provide your name.');
@@ -98,12 +100,18 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onBack, onOpenResume }
     setFormStatus('submitting');
     setErrorMessage('');
 
-    setTimeout(() => {
+    try {
+      const result = await dispatchContactEnquiry({
+        senderName: senderName.trim(),
+        senderEmail: senderEmail.trim(),
+        subject,
+        message: message.trim(),
+      });
+
       const now = new Date();
-      const uniqueId = `ENQ-${now.getFullYear()}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
       const newInquiry: StoredInquiry = {
-        id: uniqueId,
-        timestamp: now.toISOString(),
+        id: result.messageId,
+        timestamp: result.timestamp,
         formattedDate: now.toLocaleDateString('en-GB', {
           day: '2-digit',
           month: 'short',
@@ -115,23 +123,17 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onBack, onOpenResume }
         senderEmail: senderEmail.trim(),
         subject,
         message: message.trim(),
-        status: 'queued_for_email_dispatch',
+        status: result.status === 'dispatched_live' ? 'dispatched' : 'queued_for_email_dispatch',
       };
 
-      try {
-        const existing: StoredInquiry[] = JSON.parse(
-          localStorage.getItem('portfolio_contact_enquiries') || '[]'
-        );
-        const updated = [newInquiry, ...existing];
-        localStorage.setItem('portfolio_contact_enquiries', JSON.stringify(updated));
-        setStoredInquiries(updated);
-      } catch {
-        // LocalStorage fallback
-      }
-
+      loadStoredInquiries();
       setSubmittedInquiry(newInquiry);
+      setDispatchResult(result);
       setFormStatus('submitted');
-    }, 700);
+    } catch {
+      setErrorMessage('Encountered an issue dispatching message. Please try again.');
+      setFormStatus('error');
+    }
   };
 
   const handleResetForm = () => {
@@ -142,6 +144,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onBack, onOpenResume }
     setFormStatus('idle');
     setErrorMessage('');
     setSubmittedInquiry(null);
+    setDispatchResult(null);
   };
 
   const handleClearLedger = () => {
@@ -428,7 +431,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onBack, onOpenResume }
                   </div>
 
                   <span className="inline-block px-3.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/60 font-mono text-xs text-emerald-300 uppercase tracking-widest mb-3">
-                    Enquiry Recorded & Queued
+                    {dispatchResult?.status === 'dispatched_live'
+                      ? 'Email Dispatched via Serverless Gateway'
+                      : 'Enquiry Recorded & Queued for Dispatch'}
                   </span>
 
                   <h3 className="font-editorial text-3xl text-[#fffff8] mb-2">
@@ -436,7 +441,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onBack, onOpenResume }
                   </h3>
 
                   <p className="font-sans text-sm text-[#f0ebd8] max-w-lg mx-auto mb-6 leading-relaxed">
-                    Your message has been securely recorded in our dispatch ledger under reference <span className="font-mono text-[#ffd700] font-semibold">{submittedInquiry.id}</span>. It is queued for email notification transmission to the operator.
+                    {dispatchResult?.status === 'dispatched_live' ? (
+                      <>
+                        Your message was directly transmitted via <span className="font-mono text-[#ffd700] font-semibold">{dispatchResult.provider}</span> to the operator's inbox under reference <span className="font-mono text-[#ffd700] font-semibold">{submittedInquiry.id}</span>.
+                      </>
+                    ) : (
+                      <>
+                        Your message has been securely recorded in our dispatch ledger under reference <span className="font-mono text-[#ffd700] font-semibold">{submittedInquiry.id}</span>. It is queued for email delivery to <span className="font-mono text-[#ffd700]">kanaseabhimanyu@gmail.com</span>.
+                      </>
+                    )}
                   </p>
 
                   {/* Summary Box */}

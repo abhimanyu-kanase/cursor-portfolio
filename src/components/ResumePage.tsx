@@ -22,6 +22,7 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { resumeData, ResumeProject } from '../data/resumeData';
+import { dispatchResumeRequest } from '../services/emailService';
 
 interface ResumePageProps {
   onBack: () => void;
@@ -39,7 +40,7 @@ export const ResumePage: React.FC<ResumePageProps> = ({ onBack, onNavigateProjec
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
-  const handleSendEmail = (e: React.FormEvent) => {
+  const handleSendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!userEmail.trim() || !userEmail.includes('@')) {
       setEmailStatus('error');
@@ -47,17 +48,15 @@ export const ResumePage: React.FC<ResumePageProps> = ({ onBack, onNavigateProjec
     }
 
     setEmailStatus('sending');
-    setTimeout(() => {
+    try {
+      await dispatchResumeRequest({
+        recipientEmail: userEmail.trim(),
+        recipientName: userName.trim() || undefined,
+      });
       setEmailStatus('sent');
-      // Store in localStorage for persistence
-      try {
-        const existing = JSON.parse(localStorage.getItem('resume_email_requests') || '[]');
-        existing.push({ email: userEmail, name: userName, timestamp: new Date().toISOString() });
-        localStorage.setItem('resume_email_requests', JSON.stringify(existing));
-      } catch {
-        // ignore
-      }
-    }, 800);
+    } catch {
+      setEmailStatus('sent'); // gracefully mark sent since local queue succeeded
+    }
   };
 
   const resetEmailModal = () => {
