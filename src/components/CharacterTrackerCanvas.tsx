@@ -10,6 +10,8 @@ interface CharacterTrackerCanvasProps {
     distance: number;
     directionName: string;
   }) => void;
+  isAuditOpen?: boolean;
+  onCloseAudit?: () => void;
 }
 
 const TOTAL_FRAMES = 64;
@@ -46,6 +48,8 @@ function getDirectionName(deg: number, isEyeContact: boolean): string {
 
 export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
   onTelemetryChange,
+  isAuditOpen,
+  onCloseAudit,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -67,7 +71,8 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
     fps: 60,
     directionName: 'DIRECT EYE CONTACT',
   });
-  const [showAuditPanel, setShowAuditPanel] = useState<boolean>(false);
+  const [internalAuditPanel, setInternalAuditPanel] = useState<boolean>(false);
+  const showAuditPanel = isAuditOpen !== undefined ? isAuditOpen : internalAuditPanel;
 
   // Tracking animation refs
   const hasUserMovedRef = useRef<boolean>(false);
@@ -472,15 +477,27 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
         }}
       />
 
-      {/* Floating Telemetry & Audit HUD in Bottom-Right */}
-      <div className="absolute bottom-8 right-6 md:bottom-12 md:right-12 z-30 flex flex-col items-end gap-2 pointer-events-auto">
-        {showAuditPanel && (
-          <div className="tactile-card p-4 rounded-2xl max-w-sm w-full flex flex-col gap-3 font-mono text-xs shadow-2xl backdrop-blur-xl border border-[#3e5630]/80 bg-[#142210]/95 text-[#faf8f3]">
+      {/* Floating Telemetry & Audit HUD (positioned below right-side Audit button) */}
+      {showAuditPanel && (
+        <div className="hidden lg:block absolute top-[520px] right-6 sm:right-10 md:right-12 lg:right-16 z-30 pointer-events-auto max-w-sm w-full animate-in fade-in duration-200">
+          <div className="tactile-card p-4 rounded-2xl w-full flex flex-col gap-3 font-mono text-xs shadow-2xl backdrop-blur-xl border border-[#3e5630]/80 bg-[#142210]/95 text-[#faf8f3]">
             <div className="flex items-center justify-between border-b border-[#5c3a25]/50 pb-2">
               <span className="font-semibold text-[#faf8f3] tracking-wider uppercase text-[11px] flex items-center gap-1.5">
                 <Activity className="w-3.5 h-3.5 text-[#ffd700]" /> Live Diagnostics
               </span>
-              <span className="text-[11px] text-[#e6c280]/70">FRAME #{telemetry.frameIndex}</span>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] text-[#e6c280]/70">FRAME #{telemetry.frameIndex}</span>
+                <button
+                  onClick={() => {
+                    if (onCloseAudit) onCloseAudit();
+                    else setInternalAuditPanel(false);
+                  }}
+                  className="px-1.5 py-0.5 rounded text-[#e6c280] hover:text-[#ffd700] hover:bg-[#380712] transition-colors cursor-pointer text-xs"
+                  title="Close Audit"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
 
             {/* Compass Gaze */}
@@ -597,17 +614,8 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
               </div>
             </div>
           </div>
-        )}
-
-        <button
-          onClick={() => setShowAuditPanel((prev) => !prev)}
-          className="px-8 sm:px-10 py-4 sm:py-4.5 bg-[#23150e]/85 hover:bg-[#321e14]/90 border border-[#5c3a25]/75 hover:border-[#ffd700] rounded-full text-sm sm:text-base md:text-lg font-mono font-semibold text-[#faf8f3] hover:text-[#ffd700] transition-all flex items-center gap-2.5 cursor-pointer shadow-[0_8px_30px_rgba(28,15,8,0.7)] backdrop-blur-md hover:scale-105 active:scale-95 hover:shadow-[0_0_28px_rgba(230,194,128,0.35)]"
-          title="Toggle Compass & 355°–360° Loop Closure Audit"
-        >
-          <Compass className="w-5 h-5 text-[#ffd700]" />
-          <span>{showAuditPanel ? 'Close Audit' : 'Audit'}</span>
-        </button>
-      </div>
+        </div>
+      )}
     </div>
   );
 };
