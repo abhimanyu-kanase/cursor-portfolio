@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ArrowLeft,
   Download,
@@ -20,6 +20,11 @@ import {
   X,
   FileCheck,
   AlertCircle,
+  Globe,
+  Database,
+  Brain,
+  Cloud,
+  GitBranch,
 } from 'lucide-react';
 import { resumeData, ResumeProject } from '../data/resumeData';
 import { dispatchResumeRequest } from '../services/emailService';
@@ -37,12 +42,100 @@ export const ResumePage: React.FC<ResumePageProps> = ({ onBack, onNavigateProjec
   const [userCompany, setUserCompany] = useState('');
   const [userNote, setUserNote] = useState('');
   const [emailStatus, setEmailStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [highlightedProjectIndex, setHighlightedProjectIndex] = useState<number | null>(null);
+  const highlightTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const resumePdfUrl = `${import.meta.env.BASE_URL}Abhimanyu_Kanase_Resume.pdf`;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    return () => {
+      if (highlightTimerRef.current) {
+        clearTimeout(highlightTimerRef.current);
+      }
+    };
   }, []);
+
+  const findProjectIndexForSkill = (skill: string): number => {
+    const normSkill = skill.toLowerCase();
+
+    // Explicit mappings for compound skill strings to best showcase projects
+    const keywordMap: { match: string; slugSnippet: string }[] = [
+      { match: 'sql', slugSnippet: 'cloud-energy' },
+      { match: 'pandas', slugSnippet: 'netflix-data' },
+      { match: 'numpy', slugSnippet: 'cotton-detection' },
+      { match: 'python', slugSnippet: 'cotton-detection' },
+      { match: 'dimensional', slugSnippet: 'cloud-energy' },
+      { match: 'star-schema', slugSnippet: 'cloud-energy' },
+      { match: 'power bi', slugSnippet: 'cloud-energy' },
+      { match: 'looker', slugSnippet: 'automated-music' },
+      { match: 'langgraph', slugSnippet: 'agentic-ai' },
+      { match: 'rag', slugSnippet: 'agentic-ai' },
+      { match: 'bert', slugSnippet: 'bert-music' },
+      { match: 'chatgpt', slugSnippet: 'agentic-ai' },
+      { match: 'claude', slugSnippet: 'agentic-ai' },
+      { match: 'vector', slugSnippet: 'agentic-ai' },
+      { match: 'pgvector', slugSnippet: 'agentic-ai' },
+      { match: 'azure', slugSnippet: 'cloud-energy' },
+      { match: 'adls', slugSnippet: 'cloud-energy' },
+      { match: 'synapse', slugSnippet: 'cloud-energy' },
+      { match: 'aws', slugSnippet: 'spotify-streaming' },
+      { match: 'athena', slugSnippet: 'spotify-streaming' },
+      { match: 'snowflake', slugSnippet: 'cloud-energy' },
+      { match: 'databricks', slugSnippet: 'cloud-energy' },
+      { match: 'docker', slugSnippet: 'nl-data-query' },
+      { match: 'jira', slugSnippet: 'laser-trimming' },
+      { match: 'agile', slugSnippet: 'cloud-energy' },
+      { match: 'scrum', slugSnippet: 'cloud-energy' },
+      { match: 'figma', slugSnippet: 'nike-website' },
+      { match: 'requirements', slugSnippet: 'laser-trimming' },
+      { match: 'git', slugSnippet: 'nl-data-query' },
+      { match: 'ci/cd', slugSnippet: 'nl-data-query' },
+    ];
+
+    for (const entry of keywordMap) {
+      if (normSkill.includes(entry.match)) {
+        const idx = resumeData.projects.findIndex((p: ResumeProject) =>
+          p.projectSlug?.includes(entry.slugSnippet)
+        );
+        if (idx !== -1) return idx;
+      }
+    }
+
+    // Dynamic fallback: search across title, techStack, and bullets
+    const tokens = normSkill
+      .replace(/[(),/&]/g, ' ')
+      .split(/\s+/)
+      .filter((t) => t.length > 2);
+
+    for (let i = 0; i < resumeData.projects.length; i++) {
+      const p = resumeData.projects[i];
+      const text = `${p.title} ${p.techStack || ''} ${p.bullets.join(' ')}`.toLowerCase();
+      if (tokens.some((token) => text.includes(token))) {
+        return i;
+      }
+    }
+
+    return 0; // Default to first project
+  };
+
+  const handleSkillClick = (skill: string) => {
+    const targetIdx = findProjectIndexForSkill(skill);
+    if (targetIdx !== -1) {
+      const element = document.getElementById(`project-card-${targetIdx}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      setHighlightedProjectIndex(targetIdx);
+
+      if (highlightTimerRef.current) {
+        clearTimeout(highlightTimerRef.current);
+      }
+      highlightTimerRef.current = setTimeout(() => {
+        setHighlightedProjectIndex(null);
+      }, 2500); // Glow and pop for 2.5 seconds
+    }
+  };
 
   const handleSendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -475,11 +568,11 @@ export const ResumePage: React.FC<ResumePageProps> = ({ onBack, onNavigateProjec
               </h2>
             </div>
             <span className="font-mono text-xs sm:text-sm text-[#e6c280] hidden sm:block">
-              Click any skill to jump and illuminate its featured project
+              Hover keywords to illuminate proficiency
             </span>
           </div>
 
-          {/* Symmetrical 4-Card Grid with Card-Level Glow, Sweeping Line & Skill Click Navigation */}
+          {/* Symmetrical 4-Card Grid with Card-Level Glow & Sweeping Line */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
@@ -552,15 +645,12 @@ export const ResumePage: React.FC<ResumePageProps> = ({ onBack, onNavigateProjec
                   {/* Skills Keyword Pills with tactile hover glow and click-to-project trigger */}
                   <div className="flex flex-wrap gap-2.5">
                     {cat.skills.map((item) => (
-                      <button
+                      <span
                         key={item}
-                        type="button"
-                        onClick={() => handleSkillClick(item)}
-                        className="px-4 py-2 rounded-2xl bg-[#0e180b]/90 border border-[#3e5630]/80 font-mono text-xs sm:text-sm text-[#faf8f3] font-medium tracking-wide shadow-sm transition-all duration-300 hover:scale-105 hover:border-[#ffd700] hover:bg-gradient-to-r hover:from-[#380712] hover:via-[#26050c] hover:to-[#1a2d15] hover:text-[#ffd700] hover:shadow-[0_0_24px_rgba(255,215,0,0.85)] cursor-pointer active:scale-95 text-left"
-                        title={`Click to jump to project using ${item}`}
+                        className="px-4 py-2 rounded-2xl bg-[#0e180b]/90 border border-[#3e5630]/80 font-mono text-xs sm:text-sm text-[#faf8f3] font-medium tracking-wide shadow-sm transition-all duration-300 hover:scale-105 hover:border-[#ffd700] hover:bg-gradient-to-r hover:from-[#380712] hover:via-[#26050c] hover:to-[#1a2d15] hover:text-[#ffd700] hover:shadow-[0_0_24px_rgba(255,215,0,0.85)] cursor-default select-none"
                       >
                         {item}
-                      </button>
+                      </span>
                     ))}
                   </div>
                 </div>
