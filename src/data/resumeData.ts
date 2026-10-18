@@ -152,6 +152,8 @@ export const resumeData: ResumeData = {
     languages: [
       { name: 'English', level: 'Fluent' },
       { name: 'German', level: 'B1 (Currently Learning)' },
+      { name: 'Hindi', level: 'Native' },
+      { name: 'Marathi', level: 'Native' },
     ],
     interests: ['Photography', 'Video Editing', 'AI Architecture', 'Open Source'],
   },

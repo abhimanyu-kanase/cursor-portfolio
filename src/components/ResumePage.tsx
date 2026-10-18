@@ -568,11 +568,11 @@ export const ResumePage: React.FC<ResumePageProps> = ({ onBack, onNavigateProjec
               </h2>
             </div>
             <span className="font-mono text-xs sm:text-sm text-[#e6c280] hidden sm:block">
-              Hover keywords to illuminate proficiency
+              Click any skill to jump and illuminate its featured project
             </span>
           </div>
 
-          {/* Symmetrical 4-Card Grid with Card-Level Glow & Sweeping Line */}
+          {/* Symmetrical 4-Card Grid with Card-Level Glow, Sweeping Line & Skill Click Navigation */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
@@ -645,12 +645,15 @@ export const ResumePage: React.FC<ResumePageProps> = ({ onBack, onNavigateProjec
                   {/* Skills Keyword Pills with tactile hover glow and click-to-project trigger */}
                   <div className="flex flex-wrap gap-2.5">
                     {cat.skills.map((item) => (
-                      <span
+                      <button
                         key={item}
-                        className="px-4 py-2 rounded-2xl bg-[#0e180b]/90 border border-[#3e5630]/80 font-mono text-xs sm:text-sm text-[#faf8f3] font-medium tracking-wide shadow-sm transition-all duration-300 hover:scale-105 hover:border-[#ffd700] hover:bg-gradient-to-r hover:from-[#380712] hover:via-[#26050c] hover:to-[#1a2d15] hover:text-[#ffd700] hover:shadow-[0_0_24px_rgba(255,215,0,0.85)] cursor-default select-none"
+                        type="button"
+                        onClick={() => handleSkillClick(item)}
+                        className="px-4 py-2 rounded-2xl bg-[#0e180b]/90 border border-[#3e5630]/80 font-mono text-xs sm:text-sm text-[#faf8f3] font-medium tracking-wide shadow-sm transition-all duration-300 hover:scale-105 hover:border-[#ffd700] hover:bg-gradient-to-r hover:from-[#380712] hover:via-[#26050c] hover:to-[#1a2d15] hover:text-[#ffd700] hover:shadow-[0_0_24px_rgba(255,215,0,0.85)] cursor-pointer active:scale-95 text-left"
+                        title={`Click to jump to project using ${item}`}
                       >
                         {item}
-                      </span>
+                      </button>
                     ))}
                   </div>
                 </div>
