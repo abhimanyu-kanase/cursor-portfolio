@@ -1,10 +1,42 @@
-# Abhimanyu Kanase — Personal Portfolio (v1.0.0)
+# Abhimanyu Kanase — AI & Data Engineering Portfolio
 
 A bespoke, editorial 60 FPS interactive portfolio engineered for Data & AI applications, scalable architectures, and real-time canvas interactions.
 
-🔗 **GitHub Repository**: [https://github.com/abhimanyu-kanase/cursor-portfolio](https://github.com/abhimanyu-kanase/cursor-portfolio)  
-🌐 **Live Website**: [https://abhimanyu-kanase.github.io/cursor-portfolio/](https://abhimanyu-kanase.github.io/cursor-portfolio/)  
-🚀 **Release Tag**: [v1.0.0](https://github.com/abhimanyu-kanase/cursor-portfolio/releases/tag/v1.0.0)
+[![Live Demo Status](https://img.shields.io/badge/Live%20Demo-v2.0%20Active-emerald?style=for-the-badge&logo=githubpages&logoColor=white)](https://abhimanyu-kanase.github.io/cursor-portfolio/)
+[![Portfolio Build](https://img.shields.io/badge/Build%20Version-3.5%20(Stage%203)-amber?style=for-the-badge&logo=git&logoColor=white)](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-3)
+[![Main Branch](https://img.shields.io/badge/Branch-main-blue?style=for-the-badge&logo=git)](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/main)
+
+---
+
+### 🌐 Live Demo & Deployment Status (For Recruiters & Reviewers)
+
+| Parameter | Current Status | Notes |
+| :--- | :--- | :--- |
+| **Live Demo URL** | [abhimanyu-kanase.github.io/cursor-portfolio](https://abhimanyu-kanase.github.io/cursor-portfolio/) | Hosted on GitHub Pages (`gh-pages` branch) |
+| **Live Demo Iteration** | **Version 2.0 (Active)** | Current production release deployed to the web |
+| **Underlying Build Version** | **Version 3.5 (Stage 3)** | Sourced directly from `main` & `stage-3` (Commit `a8a3df6`+) |
+| **Active Development Branch** | [`stage-3`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-3) | Ongoing development & active stage branch |
+| **Primary Production Branch** | [`main`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/main) | Production-ready mirrored branch containing all merged stages |
+
+> **Note for Recruiters & Engineering Reviewers**:  
+> While visitors navigating the live portfolio website experience a clean, distraction-free editorial interface without internal software version labels, Git visitors can reference this matrix to inspect the chronological development stages preserved across individual branches:
+> - **Live Demo v1.0** *(Archived / Release v1.0.0)*: Initial Canvas 2D gaze tracker and foundational layout.
+> - **Live Demo v2.0** *(Active / Powered by Build Version 3.5)*: Comprehensive overhaul featuring:
+>   - **Architecture Deep-Dive & 10-Project Catalog**: Full technical case studies with architecture schematics, stack breakdown, and live GitHub/demo links.
+>   - **Interactive Resume & Executive Dossier**: Full career trajectory, publication highlights, and PDF export (`#/resume`).
+>   - **Direct Contact & Mail Dispatcher**: End-to-end client email delivery with Resend and EmailJS fallbacks (`#/contact`).
+>   - **Peer-Reviewed Scientific Research**: Direct IEEE Xplore and Springer Nature LNNS publication access.
+>   - **Luxury Editorial Aesthetic**: Reordered flow, 3cm wide editorial spread, tactile plaster textures, and Italian Walnut hover transitions.
+
+---
+
+### 🌿 Chronological Branch Structure
+
+Recruiters are invited to inspect how the portfolio developed incrementally across distinct stages:
+- [`main`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/main): Master production branch reflecting the latest merged build (**Build v3.5**).
+- [`stage-3`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-3): Latest active stage — UI reordering, dedicated education section, tactile card texture unification, and publication linkages (**Build v3.5**).
+- [`stage-2`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-2): Stage 2 development — complete 10-project architecture catalog, interactive deep-dive modals, and horizontal card layouts (**Build v2.4**).
+- [`gh-pages`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/gh-pages): Distribution branch serving the **Live Demo (v2.0)**.
 
 ---
 
@@ -28,6 +60,7 @@ A bespoke, editorial 60 FPS interactive portfolio engineered for Data & AI appli
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
 - **Canvas Rendering**: Custom requestAnimationFrame 2D context with hardware-accelerated WebP image caching
+- **Email Dispatch**: Resend REST API integration with EmailJS fallback
 
 ---
 
@@ -46,6 +79,9 @@ npm run dev
 
 # Build for production
 npm run build
+
+# Deploy to GitHub Pages
+npm run deploy
 ```
 
 ---
