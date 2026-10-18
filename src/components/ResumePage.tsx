@@ -527,7 +527,19 @@ export const ResumePage: React.FC<ResumePageProps> = ({ onBack, onNavigateProjec
                     <div>
                       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-2.5">
                         <h3 className="font-editorial text-2xl sm:text-3xl text-[#fffff8] group-hover:text-[#ffd700] transition-colors leading-snug">
-                          {pub.title}
+                          {pub.url ? (
+                            <a
+                              href={pub.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline decoration-[#ffd700]/70 underline-offset-4 inline-flex items-baseline gap-2 group/title"
+                            >
+                              <span>{pub.title}</span>
+                              <ArrowUpRight className="w-5 h-5 text-[#ffd700]/60 group-hover/title:text-[#ffd700] group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 transition-all inline self-center shrink-0" />
+                            </a>
+                          ) : (
+                            pub.title
+                          )}
                         </h3>
                         {/* Burgundy date pill aligned on the right, turns into gold on hover */}
                         <span className="font-mono text-xs sm:text-sm px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#4a0a18] via-[#380712] to-[#25040b] border border-[#852238] text-[#fffff8] font-medium shrink-0 self-start sm:self-auto shadow-[0_2px_8px_rgba(56,7,18,0.5)] transition-all duration-300 group-hover:border-[#ffd700] group-hover:bg-gradient-to-r group-hover:from-[#ffd700] group-hover:via-[#f5d77f] group-hover:to-[#e6c280] group-hover:text-[#1c0f08] group-hover:font-bold group-hover:shadow-[0_0_18px_rgba(255,215,0,0.75)]">
@@ -536,9 +548,21 @@ export const ResumePage: React.FC<ResumePageProps> = ({ onBack, onNavigateProjec
                       </div>
                       <div className="font-mono text-sm sm:text-base text-[#e6c280] font-medium flex items-center justify-between gap-2 flex-wrap">
                         <span>Original Research Paper</span>
-                        <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#0e180b] border border-[#ffd700]/50 text-[#ffd700] font-medium">
-                          Peer-Reviewed
-                        </span>
+                        {pub.url ? (
+                          <a
+                            href={pub.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[11px] font-mono px-3 py-1 rounded-full bg-[#0e180b] border border-[#ffd700]/60 text-[#ffd700] font-semibold hover:bg-gradient-to-r hover:from-[#ffd700] hover:to-[#e6c280] hover:text-[#1c0f08] transition-all flex items-center gap-1 shadow-[0_0_12px_rgba(255,215,0,0.35)] hover:scale-105"
+                          >
+                            <span>Read Paper</span>
+                            <ArrowUpRight className="w-3 h-3" />
+                          </a>
+                        ) : (
+                          <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#0e180b] border border-[#ffd700]/50 text-[#ffd700] font-medium">
+                            Peer-Reviewed
+                          </span>
+                        )}
                       </div>
                     </div>
 

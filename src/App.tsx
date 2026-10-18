@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SelectedWorks } from './components/SelectedWorks';
+import { ProfileBackground } from './components/ProfileBackground';
 import { ArchitectureDeepDive } from './components/ArchitectureDeepDive';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
@@ -62,6 +63,23 @@ export const App: React.FC = () => {
     setCurrentRoute({ type: 'resume' });
     window.location.hash = '#/resume';
     window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const [highlightTarget, setHighlightTarget] = useState<string | null>(null);
+  const highlightTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleNavigateToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setHighlightTarget(sectionId);
+      if (highlightTimeoutRef.current) {
+        clearTimeout(highlightTimeoutRef.current);
+      }
+      highlightTimeoutRef.current = setTimeout(() => {
+        setHighlightTarget(null);
+      }, 2500);
+    }
   };
 
   const handleOpenContact = () => {
@@ -126,11 +144,18 @@ export const App: React.FC = () => {
               onOpenContact={handleOpenContact}
             />
 
+            {/* Profile & Academic Background Section */}
+            <ProfileBackground
+              onOpenContact={handleOpenContact}
+              onNavigateToSection={handleNavigateToSection}
+              onOpenResume={handleOpenResume}
+            />
+
             {/* Selected Works Section */}
             <SelectedWorks onSelectProject={handleSelectProject} />
 
-            {/* Technical Architecture Deep Dive */}
-            <ArchitectureDeepDive />
+            {/* Technical Architecture Deep Dive: Experience & Competencies */}
+            <ArchitectureDeepDive highlightTarget={highlightTarget} />
           </main>
         </>
       )}

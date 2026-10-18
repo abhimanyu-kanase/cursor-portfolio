@@ -12,6 +12,7 @@ import {
   Phone,
   MapPin,
   Linkedin,
+  ArrowUpRight,
 } from 'lucide-react';
 
 interface ResumeModalProps {
@@ -171,27 +172,43 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <span>Peer-Reviewed Publications</span>
             </div>
             <div className="space-y-2.5 font-mono text-xs">
-              <div className="tactile-card p-3.5 rounded-xl border border-[#3e5630]/60 bg-[#142210]/85">
+              <a
+                href="https://ieeexplore.ieee.org/abstract/document/10592884"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tactile-card p-3.5 rounded-xl border border-[#3e5630]/60 hover:border-[#ffd700] bg-[#142210]/85 hover:bg-[#1a2d15] transition-all block group/pub"
+              >
                 <div className="flex justify-between items-start">
-                  <span className="font-semibold text-[#faf8f3]">Cotton Detection Using YOLOv5 for Agricultural Analysis</span>
+                  <span className="font-semibold text-[#faf8f3] group-hover/pub:text-[#ffd700] transition-colors flex items-center gap-1.5">
+                    <span>Cotton Detection Using YOLOv5 for Agricultural Analysis</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#ffd700]/70 group-hover/pub:text-[#ffd700] group-hover/pub:translate-x-0.5 group-hover/pub:-translate-y-0.5 transition-all inline shrink-0" />
+                  </span>
                   <span className="text-[10px] text-[#ffd700] font-semibold">2024</span>
                 </div>
                 <div className="text-[11px] text-[#e6c280]/80 mt-0.5">IEEE • 5th International Conference on Emerging Technology (INCET 2024)</div>
                 <p className="font-sans text-xs text-[#f0ebd8]/75 mt-1 font-light">
                   YOLOv5 ML model piloted on 10,000+ field images, achieving ~85% precision and 0.80+ mAP.
                 </p>
-              </div>
+              </a>
 
-              <div className="tactile-card p-3.5 rounded-xl border border-[#3e5630]/60 bg-[#142210]/85">
+              <a
+                href="https://link.springer.com/chapter/10.1007/978-981-97-8329-8_55"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tactile-card p-3.5 rounded-xl border border-[#3e5630]/60 hover:border-[#ffd700] bg-[#142210]/85 hover:bg-[#1a2d15] transition-all block group/pub"
+              >
                 <div className="flex justify-between items-start">
-                  <span className="font-semibold text-[#faf8f3]">Computer Vision-Based Weed Killing Rover</span>
+                  <span className="font-semibold text-[#faf8f3] group-hover/pub:text-[#ffd700] transition-colors flex items-center gap-1.5">
+                    <span>Computer Vision-Based Weed Killing Rover</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#ffd700]/70 group-hover/pub:text-[#ffd700] group-hover/pub:translate-x-0.5 group-hover/pub:-translate-y-0.5 transition-all inline shrink-0" />
+                  </span>
                   <span className="text-[10px] text-[#ffd700] font-semibold">2024</span>
                 </div>
                 <div className="text-[11px] text-[#e6c280]/80 mt-0.5">Springer • ICICCD 2024, Lecture Notes in Networks and Systems</div>
                 <p className="font-sans text-xs text-[#f0ebd8]/75 mt-1 font-light">
                   Autonomous computer vision rover for targeted agricultural intervention and yield optimization.
                 </p>
-              </div>
+              </a>
             </div>
           </div>
 

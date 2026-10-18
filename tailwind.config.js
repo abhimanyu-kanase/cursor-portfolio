@@ -66,7 +66,8 @@ export default {
         cursive: ['"Dancing Script"', 'cursive'],
         display: ['"Cinzel Decorative"', '"Playfair Display"', 'serif'],
         editorial: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', '"Outfit"', 'system-ui', 'sans-serif'],
+        outfit: ['"Outfit"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       animation: {

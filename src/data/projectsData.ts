@@ -132,7 +132,7 @@ export const projectsData: ProjectDetail[] = [
     category: 'Computer Vision & Deep Learning',
     year: '2024',
     status: 'Published Research Paper',
-    liveDemoUrl: 'https://github.com/abhimanyu-kanase/cotton-detection-using-yolov5',
+    liveDemoUrl: 'https://ieeexplore.ieee.org/abstract/document/10592884',
     githubUrl: 'https://github.com/abhimanyu-kanase/cotton-detection-using-yolov5',
     shortDescription:
       'Engineered an end-to-end ML pipeline on 10,000+ field images with data augmentation and feature engineering, achieving ~85% precision and 0.80+ mAP. Published in IEEE 5th INCET 2024.',

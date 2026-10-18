@@ -78,7 +78,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
                 rel="noopener noreferrer"
                 className="group px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#ffd700] via-[#f5d77f] to-[#e6c280] text-[#1c0f08] font-sans font-bold text-xs sm:text-sm flex items-center gap-2 shadow-[0_4px_18px_rgba(230,194,128,0.4)] hover:shadow-[0_6px_24px_rgba(255,215,0,0.6)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
               >
-                <span>Live Demo</span>
+                <span>{project.slug === 'cotton-detection-harvest-vision' ? 'IEEE Publication' : 'Live Demo'}</span>
                 <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#1c0f08]" />
               </a>
             )}

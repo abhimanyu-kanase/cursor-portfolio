@@ -18,6 +18,7 @@ export interface ResumePublication {
   title: string;
   venue: string;
   year: string;
+  url?: string;
 }
 
 export interface ResumeProject {
@@ -105,11 +106,13 @@ export const resumeData: ResumeData = {
       title: 'Cotton Detection Using YOLOv5 for Agricultural Analysis',
       venue: 'IEEE, 5th International Conference on Emerging Technology (INCET 2024)',
       year: '2024',
+      url: 'https://ieeexplore.ieee.org/abstract/document/10592884',
     },
     {
       title: 'Computer Vision-Based Weed Killing Rover',
       venue: 'Springer, ICICCD 2024, Lecture Notes in Networks and Systems',
       year: '2024',
+      url: 'https://link.springer.com/chapter/10.1007/978-981-97-8329-8_55',
     },
   ],
   skills: {
