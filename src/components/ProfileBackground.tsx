@@ -38,7 +38,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
       </div>
 
       {/* Full-Width Grand Executive Candidate Dossier Card */}
-      <div className="glass-panel p-8 sm:p-12 lg:p-16 rounded-3xl tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] relative overflow-hidden group transition-all duration-300 w-full">
+      <div className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-8 sm:p-12 lg:p-16 rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] overflow-hidden w-full">
         {/* Walnut Left Accent Bar */}
         <div className="absolute left-0 top-8 bottom-8 w-2 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
 
@@ -66,17 +66,62 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
             Data & AI-focused engineer translating intricate technical systems into high-impact, decision-ready intelligence.
           </p>
 
-          {/* Narrative Body Text with Supreme Readability and Outfit Typography */}
-          <div className="space-y-5 font-outfit text-base sm:text-lg md:text-xl lg:text-[21px] text-[#faf8f3] font-light leading-[1.85] max-w-6xl">
-            <p>
-              I am currently pursuing my Master of Science in Data Science at{' '}
-              <strong className="text-[#ffd700] font-semibold">Hochschule Fulda, Germany</strong>. My technical architecture centers on engineering resilient cloud-based data models, interactive enterprise business intelligence dashboards, and custom multi-agent Generative AI workflows with{' '}
-              <strong className="text-[#ffd700] font-semibold">LangGraph & Retrieval-Augmented Generation (RAG)</strong>.
-            </p>
-            <p className="text-[#f0ebd8]">
-              Prior to my Master’s, I graduated with a Bachelor of Engineering in Electronics & Telecommunication at PCCoE (final grade{' '}
-              <strong className="text-[#ffd700] font-semibold">1.9/5.0 German equivalent</strong>) and gained proven hands-on industry experience building automated extraction pipelines, data hygiene workflows, and stakeholder visualisations in fast-paced Agile/Scrum environments.
-            </p>
+          {/* Full Horizontal Spread Narrative Body with Walnut-to-Green Hover Texture (Matching SelectedWorks) */}
+          <div className="relative group/desc w-full cursor-pointer p-5 -mx-5 sm:p-7 sm:-mx-7 rounded-2xl transition-all duration-300 overflow-hidden border border-transparent group-hover:border-[#5c3a25]/75 hover:!border-[#ffd700]/70 hover:shadow-[0_12px_32px_rgba(10,18,8,0.7),0_0_24px_rgba(77,50,33,0.45)]">
+            {/* Walnut-to-Green Textured Background (Active ONLY on Hover across full width) */}
+            <div
+              className="absolute inset-0 pointer-events-none rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              aria-hidden="true"
+            >
+              {/* Green plaster texture base matching the background */}
+              <div
+                className="absolute inset-0 rounded-2xl"
+                style={{
+                  backgroundColor: 'rgba(20, 34, 16, 0.92)',
+                  backgroundImage: `url('${import.meta.env.BASE_URL}green-texture.webp')`,
+                  backgroundRepeat: 'repeat',
+                  backgroundSize: '512px 512px',
+                }}
+              />
+
+              {/* Walnut plaster texture overlay on the left fading into the green texture on the right */}
+              <div
+                className="absolute inset-0 rounded-2xl"
+                style={{
+                  backgroundImage: `url('${import.meta.env.BASE_URL}walnut-texture.webp')`,
+                  backgroundRepeat: 'repeat',
+                  backgroundSize: '512px 512px',
+                  WebkitMaskImage:
+                    'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.94) 15%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0) 90%)',
+                  maskImage:
+                    'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.94) 15%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0) 90%)',
+                }}
+              />
+
+              {/* Ambient warm atmospheric walnut glow on the left of the description */}
+              <div
+                className="absolute inset-0 rounded-2xl"
+                style={{
+                  background:
+                    'linear-gradient(to right, rgba(77, 50, 33, 0.55) 0%, rgba(54, 34, 22, 0.28) 28%, transparent 62%)',
+                }}
+              />
+            </div>
+
+            <div className="relative z-10 space-y-5 font-outfit text-base sm:text-lg md:text-xl lg:text-[21px] text-[#faf8f3] font-light leading-[1.85] max-w-6xl">
+              <p>
+                I am currently pursuing my Master of Science in Data Science at{' '}
+                <strong className="text-[#ffd700] font-semibold">Hochschule Fulda, Germany</strong>. My technical architecture centers on engineering resilient cloud-based data models, interactive enterprise business intelligence dashboards, and custom multi-agent Generative AI workflows with{' '}
+                <strong className="text-[#ffd700] font-semibold">LangGraph & Retrieval-Augmented Generation (RAG)</strong>.
+              </p>
+              <p className="text-[#f0ebd8]">
+                Prior to my Master’s, I graduated with a Bachelor of Engineering in Electronics & Telecommunication at PCCoE (final grade{' '}
+                <strong className="text-[#ffd700] font-semibold">1.9/5.0 German equivalent</strong>) and gained proven hands-on industry experience building automated extraction pipelines, data hygiene workflows, and stakeholder visualisations in fast-paced Agile/Scrum environments.
+              </p>
+            </div>
+
+            {/* Luminous Light-Beam Sweep Line in Radiant Gold */}
+            <div className="relative z-10 h-[2px] w-0 group-hover/desc:w-full bg-gradient-to-r from-[#ffd700] via-[#f7de9c] to-transparent transition-all duration-500 ease-out mt-5 rounded-full opacity-0 group-hover/desc:opacity-100 shadow-[0_0_12px_#ffd700]" />
           </div>
         </div>
 
@@ -105,9 +150,15 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
                 onNavigateToSection ? onNavigateToSection('education') : document.getElementById('education')?.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="p-5 sm:p-6 rounded-2xl bg-[#0e180b]/80 border border-[#3e5630]/60 transition-all duration-300 hover:border-[#ffd700] hover:bg-[#1a2d15] hover:shadow-[0_0_25px_rgba(255,215,0,0.35)] hover:-translate-y-1 cursor-pointer group/metric flex flex-col justify-between"
+            className="group/metric relative overflow-hidden tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-[#3e5630]/60 hover:border-[#ffd700] transition-all duration-300 hover:shadow-[0_16px_36px_rgba(10,18,8,0.9),0_0_25px_rgba(255,215,0,0.35)] hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
           >
-            <div>
+            {/* Ambient Top Gold Glow */}
+            <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#ffd700]/15 rounded-full blur-2xl opacity-0 group-hover/metric:opacity-100 transition-opacity pointer-events-none duration-300 z-0" />
+
+            {/* Walnut Left Accent Line */}
+            <div className="absolute left-0 top-4 bottom-4 w-1.5 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover/metric:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
+
+            <div className="relative z-10">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <GraduationCap className="w-4 h-4 text-[#ffd700]" />
@@ -124,7 +175,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
                 Hochschule Fulda, Germany
               </span>
             </div>
-            <div className="mt-3 pt-2.5 border-t border-[#3e5630]/40 flex items-center justify-between text-xs font-mono text-[#e6c280]/80 group-hover/metric:text-[#ffd700] transition-colors">
+            <div className="mt-3 pt-2.5 border-t border-[#3e5630]/40 flex items-center justify-between text-xs font-mono text-[#e6c280]/80 group-hover/metric:text-[#ffd700] transition-colors relative z-10">
               <span>View Degrees</span>
               <span>↓</span>
             </div>
@@ -147,9 +198,15 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
                 onOpenContact ? onOpenContact() : (window.location.hash = '#/contact');
               }
             }}
-            className="p-5 sm:p-6 rounded-2xl bg-[#0e180b]/80 border border-[#3e5630]/60 transition-all duration-300 hover:border-[#ffd700] hover:bg-[#1a2d15] hover:shadow-[0_0_25px_rgba(255,215,0,0.35)] hover:-translate-y-1 cursor-pointer group/metric flex flex-col justify-between"
+            className="group/metric relative overflow-hidden tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-[#3e5630]/60 hover:border-[#ffd700] transition-all duration-300 hover:shadow-[0_16px_36px_rgba(10,18,8,0.9),0_0_25px_rgba(255,215,0,0.35)] hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
           >
-            <div>
+            {/* Ambient Top Gold Glow */}
+            <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#ffd700]/15 rounded-full blur-2xl opacity-0 group-hover/metric:opacity-100 transition-opacity pointer-events-none duration-300 z-0" />
+
+            {/* Walnut Left Accent Line */}
+            <div className="absolute left-0 top-4 bottom-4 w-1.5 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover/metric:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
+
+            <div className="relative z-10">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#ffd700]" />
@@ -166,7 +223,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
                 Germany • Open to Remote & On-Site
               </span>
             </div>
-            <div className="mt-3 pt-2.5 border-t border-[#3e5630]/40 flex items-center justify-between text-xs font-mono text-[#e6c280]/80 group-hover/metric:text-[#ffd700] transition-colors">
+            <div className="mt-3 pt-2.5 border-t border-[#3e5630]/40 flex items-center justify-between text-xs font-mono text-[#e6c280]/80 group-hover/metric:text-[#ffd700] transition-colors relative z-10">
               <span>Contact Page</span>
               <span>→</span>
             </div>
@@ -190,9 +247,15 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
                 onNavigateToSection ? onNavigateToSection('peer-review') : document.getElementById('peer-review')?.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="p-5 sm:p-6 rounded-2xl bg-[#0e180b]/80 border border-[#3e5630]/60 transition-all duration-300 hover:border-[#ffd700] hover:bg-[#1a2d15] hover:shadow-[0_0_25px_rgba(255,215,0,0.35)] hover:-translate-y-1 cursor-pointer group/metric flex flex-col justify-between"
+            className="group/metric relative overflow-hidden tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-[#3e5630]/60 hover:border-[#ffd700] transition-all duration-300 hover:shadow-[0_16px_36px_rgba(10,18,8,0.9),0_0_25px_rgba(255,215,0,0.35)] hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
           >
-            <div>
+            {/* Ambient Top Gold Glow */}
+            <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#ffd700]/15 rounded-full blur-2xl opacity-0 group-hover/metric:opacity-100 transition-opacity pointer-events-none duration-300 z-0" />
+
+            {/* Walnut Left Accent Line */}
+            <div className="absolute left-0 top-4 bottom-4 w-1.5 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover/metric:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
+
+            <div className="relative z-10">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4 text-[#ffd700]" />
@@ -209,7 +272,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
                 IEEE INCET & Springer ICICCD 2024
               </span>
             </div>
-            <div className="mt-3 pt-2.5 border-t border-[#3e5630]/40 flex items-center justify-between text-xs font-mono text-[#e6c280]/80 group-hover/metric:text-[#ffd700] transition-colors">
+            <div className="mt-3 pt-2.5 border-t border-[#3e5630]/40 flex items-center justify-between text-xs font-mono text-[#e6c280]/80 group-hover/metric:text-[#ffd700] transition-colors relative z-10">
               <span>View Research</span>
               <span>↓</span>
             </div>
@@ -233,9 +296,15 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
                 onNavigateToSection ? onNavigateToSection('skills') : document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="p-5 sm:p-6 rounded-2xl bg-[#0e180b]/80 border border-[#3e5630]/60 transition-all duration-300 hover:border-[#ffd700] hover:bg-[#1a2d15] hover:shadow-[0_0_25px_rgba(255,215,0,0.35)] hover:-translate-y-1 cursor-pointer group/metric flex flex-col justify-between"
+            className="group/metric relative overflow-hidden tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-[#3e5630]/60 hover:border-[#ffd700] transition-all duration-300 hover:shadow-[0_16px_36px_rgba(10,18,8,0.9),0_0_25px_rgba(255,215,0,0.35)] hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
           >
-            <div>
+            {/* Ambient Top Gold Glow */}
+            <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#ffd700]/15 rounded-full blur-2xl opacity-0 group-hover/metric:opacity-100 transition-opacity pointer-events-none duration-300 z-0" />
+
+            {/* Walnut Left Accent Line */}
+            <div className="absolute left-0 top-4 bottom-4 w-1.5 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover/metric:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
+
+            <div className="relative z-10">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#ffd700]" />
@@ -252,7 +321,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
                 Immediate Working Student / Intern
               </span>
             </div>
-            <div className="mt-3 pt-2.5 border-t border-[#3e5630]/40 flex items-center justify-between text-xs font-mono text-[#e6c280]/80 group-hover/metric:text-[#ffd700] transition-colors">
+            <div className="mt-3 pt-2.5 border-t border-[#3e5630]/40 flex items-center justify-between text-xs font-mono text-[#e6c280]/80 group-hover/metric:text-[#ffd700] transition-colors relative z-10">
               <span>View Skills</span>
               <span>↓</span>
             </div>
