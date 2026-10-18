@@ -10,6 +10,8 @@ export interface ContactEnquiryPayload {
 export interface ResumeRequestPayload {
   recipientEmail: string;
   recipientName?: string;
+  companyName?: string;
+  note?: string;
 }
 
 export interface DispatchResult {
@@ -195,16 +197,21 @@ export const dispatchResumeRequest = async (
   const now = new Date();
   const messageId = `RES-${now.getFullYear()}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
   const timestamp = now.toISOString();
+  const recruiterName = payload.recipientName?.trim() || 'Hiring Lead / Recruiter';
+  const companyStr = payload.companyName?.trim() ? ` at ${payload.companyName.trim()}` : '';
+  const cleanEmail = payload.recipientEmail.trim();
 
-  // Local backup
+  // Local backup ledger
   try {
     const existing = JSON.parse(
       localStorage.getItem('resume_email_requests') || '[]'
     );
     existing.push({
       id: messageId,
-      email: payload.recipientEmail,
-      name: payload.recipientName || 'Hiring Lead',
+      email: cleanEmail,
+      name: recruiterName,
+      company: payload.companyName?.trim() || 'Not specified',
+      note: payload.note?.trim() || '',
       timestamp,
       status: 'pending_dispatch',
     });
@@ -213,10 +220,14 @@ export const dispatchResumeRequest = async (
     // ignore
   }
 
+  // Construct absolute URL to official PDF
+  const baseUrl = typeof window !== 'undefined' ? `${window.location.origin}${import.meta.env.BASE_URL}` : '';
+  const resumePdfUrl = `${baseUrl}Abhimanyu_Kanase_Resume.pdf`;
+
   // Attempt live notification via Web3Forms if configured
   if (emailConfig.web3formsAccessKey) {
     try {
-      await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -224,16 +235,44 @@ export const dispatchResumeRequest = async (
         },
         body: JSON.stringify({
           access_key: emailConfig.web3formsAccessKey,
-          name: payload.recipientName || 'Visitor / Recruiter',
-          email: payload.recipientEmail,
-          subject: `Resume Download Requested: ${payload.recipientEmail}`,
-          message: `A visitor (${payload.recipientName || 'Anonymous'}) requested a verified PDF copy of your resume for email delivery to: ${payload.recipientEmail}`,
+          name: recruiterName,
+          email: cleanEmail,
+          subject: `⚡ Recruiter Resume Request: ${recruiterName}${companyStr} (${cleanEmail})`,
+          message:
+            `You have received a new verified Resume & CV request from your portfolio!\n\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+            `RECRUITER / HIRING MANAGER DETAILS:\n` +
+            `• Name: ${recruiterName}\n` +
+            `• Email: ${cleanEmail}\n` +
+            (payload.companyName?.trim() ? `• Company / Organization: ${payload.companyName.trim()}\n` : '') +
+            (payload.note?.trim() ? `• Note / Role Focus: ${payload.note.trim()}\n` : '') +
+            `• Request Date: ${now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}\n` +
+            `• Reference ID: ${messageId}\n\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+            `OFFICIAL RESUME DOCUMENT LINK:\n` +
+            `• File Name: Abhimanyu_Kanase_Resume.pdf\n` +
+            `• Direct PDF Link: ${resumePdfUrl}\n\n` +
+            `Tip: Simply reply to this email to respond directly to ${cleanEmail}.`,
+          from_name: 'Abhimanyu Portfolio Dispatcher',
           to_email: emailConfig.recipientEmail,
+          reply_to: cleanEmail,
           reference_id: messageId,
         }),
       });
+
+      const resData = await response.json();
+      if (response.ok && resData.success) {
+        return {
+          success: true,
+          messageId,
+          provider: 'Web3Forms Live Dispatch',
+          status: 'dispatched_live',
+          feedback: `Resume request successfully dispatched to Abhimanyu Kanase!`,
+          timestamp,
+        };
+      }
     } catch (e) {
-      console.warn('Resume request notification failed:', e);
+      console.warn('Resume request notification failed, queued locally:', e);
     }
   }
 
