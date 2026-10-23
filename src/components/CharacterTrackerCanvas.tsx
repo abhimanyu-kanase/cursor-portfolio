@@ -198,21 +198,37 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
         canvas.height = targetHeight;
       }
 
-      // Character size reduced by 25% (0.75 scale factor)
+      // Dynamic dual-axis character scale engine
+      // Guarantees majestic bust presentation on 4K/1440p while preventing face/text collision on laptops
       const imageAspect = 1920 / 1080;
-      const canvasAspect = canvas.width / canvas.height;
-      const SCALE = 0.75;
-      let drawW = canvas.width * SCALE;
-      let drawH = canvas.height * SCALE;
+      const viewportW = canvas.width / dpr;
+      const viewportH = canvas.height / dpr;
 
-      if (canvasAspect > imageAspect) {
-        // Viewport is wider than 16:9
-        drawW = canvas.width * SCALE;
-        drawH = (canvas.width / imageAspect) * SCALE;
-      } else {
-        // Viewport is taller than 16:9
-        drawH = canvas.height * SCALE;
-        drawW = (canvas.height * imageAspect) * SCALE;
+      // Base height ratio adapted to viewport size
+      let heightRatio = 0.75;
+      if (viewportH < 720 || viewportW < 1366) {
+        heightRatio = 0.68;
+      } else if (viewportH < 860 || viewportW < 1550) {
+        heightRatio = 0.72;
+      }
+
+      let drawH = canvas.height * heightRatio;
+      let drawW = drawH * imageAspect;
+
+      // Dynamic width clamp to protect flank space for typography
+      const maxAllowedWidth = viewportW < 1500
+        ? canvas.width * 0.46
+        : canvas.width * 0.56;
+
+      if (drawW > maxAllowedWidth) {
+        drawW = maxAllowedWidth;
+        drawH = drawW / imageAspect;
+      }
+
+      // Safeguard against vertical clipping
+      if (drawH > canvas.height * 0.82) {
+        drawH = canvas.height * 0.82;
+        drawW = drawH * imageAspect;
       }
 
       const drawX = (canvas.width - drawW) / 2;
