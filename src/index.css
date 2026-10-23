@@ -7,7 +7,8 @@
   --bg-rgb: 24, 39, 19;
 }
 
-html, body {
+html {
+  font-size: clamp(13px, 0.82vw + 3px, 16px);
   scroll-behavior: smooth;
   background-color: #182713;
   background-image: 

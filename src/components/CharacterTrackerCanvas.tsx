@@ -205,20 +205,21 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
       const viewportH = canvas.height / dpr;
 
       // Base height ratio adapted to viewport size
-      let heightRatio = 0.75;
-      if (viewportH < 720 || viewportW < 1366) {
-        heightRatio = 0.68;
-      } else if (viewportH < 860 || viewportW < 1550) {
-        heightRatio = 0.72;
+      let heightRatio = 0.70;
+      if (viewportH < 740 || viewportW < 1400) {
+        heightRatio = 0.60;
+      } else if (viewportH < 880 || viewportW < 1650) {
+        heightRatio = 0.66;
       }
 
       let drawH = canvas.height * heightRatio;
       let drawW = drawH * imageAspect;
 
       // Dynamic width clamp to protect flank space for typography
-      const maxAllowedWidth = viewportW < 1500
-        ? canvas.width * 0.46
-        : canvas.width * 0.56;
+      // Bounds character canvas width to 36% on laptops and 46% on huge displays
+      const maxAllowedWidth = viewportW < 1650
+        ? canvas.width * 0.36
+        : canvas.width * 0.46;
 
       if (drawW > maxAllowedWidth) {
         drawW = maxAllowedWidth;
@@ -226,8 +227,8 @@ export const CharacterTrackerCanvas: React.FC<CharacterTrackerCanvasProps> = ({
       }
 
       // Safeguard against vertical clipping
-      if (drawH > canvas.height * 0.82) {
-        drawH = canvas.height * 0.82;
+      if (drawH > canvas.height * 0.78) {
+        drawH = canvas.height * 0.78;
         drawW = drawH * imageAspect;
       }
 
