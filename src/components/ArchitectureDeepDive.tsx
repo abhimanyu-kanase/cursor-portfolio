@@ -21,7 +21,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
   return (
     <section
       id="architecture"
-      className="py-24 sm:py-28 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-[#3e5630]/60 max-w-[1720px] 2xl:max-w-[1780px] w-full mx-auto select-none space-y-28"
+      className="py-20 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-10 xl:px-14 border-t border-[#3e5630]/60 max-w-[min(94vw,1760px)] w-full mx-auto select-none space-y-24 sm:space-y-28"
     >
       {/* 1. Professional Work Experience & Measured Impact */}
       <div>
@@ -32,20 +32,20 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
               Work Experience & Proven Track Record
             </span>
           </div>
-          <h3 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal text-[#faf8f3] leading-[1.06] tracking-tight">
+          <h3 className="font-editorial text-3xl sm:text-5xl lg:text-[clamp(2.5rem,4.2vw,4.75rem)] font-normal text-[#faf8f3] leading-[1.08] tracking-tight">
             Industry Experience &{' '}
             <span className="italic bg-gradient-to-r from-[#ffd700] via-[#fceab8] to-[#e6c280] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(255,215,0,0.35)]">
               Measured Impact
             </span>
           </h3>
-          <p className="font-outfit text-lg sm:text-xl md:text-2xl text-[#f0ebd8] max-w-3xl font-light mt-4 leading-relaxed">
+          <p className="font-outfit text-base sm:text-lg md:text-[clamp(1.05rem,1.2vw,1.35rem)] text-[#f0ebd8] max-w-3xl font-light mt-4 leading-relaxed">
             Delivering tangible business value through automated data pipelines, continuous validation, and stakeholder-ready dashboards across fast-paced Agile teams.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Experience Card 1: Innovaters8teen */}
-          <div className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-8 sm:p-10 lg:p-12 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] overflow-hidden">
+          <div className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-6 sm:p-8 lg:p-10 xl:p-11 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] overflow-hidden">
             {/* Walnut Left Accent Bar */}
             <div className="absolute left-0 top-8 bottom-8 w-2 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
 
@@ -122,7 +122,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
           </div>
 
           {/* Experience Card 2: Insculpt Technologies */}
-          <div className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-8 sm:p-10 lg:p-12 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] overflow-hidden">
+          <div className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-6 sm:p-8 lg:p-10 xl:p-11 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] overflow-hidden">
             {/* Walnut Left Accent Bar */}
             <div className="absolute left-0 top-8 bottom-8 w-2 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
 
@@ -199,7 +199,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
           </div>
 
           {/* Experience Card 3: Project Leadership */}
-          <div className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-8 sm:p-10 lg:p-12 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] overflow-hidden">
+          <div className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-6 sm:p-8 lg:p-10 xl:p-11 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] overflow-hidden">
             {/* Walnut Left Accent Bar */}
             <div className="absolute left-0 top-8 bottom-8 w-2 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
 
@@ -286,13 +286,13 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
               Academic Background & Degrees
             </span>
           </div>
-          <h3 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal text-[#faf8f3] leading-[1.06] tracking-tight">
+          <h3 className="font-editorial text-3xl sm:text-5xl lg:text-[clamp(2.5rem,4.2vw,4.75rem)] font-normal text-[#faf8f3] leading-[1.08] tracking-tight">
             Higher Education &{' '}
             <span className="italic bg-gradient-to-r from-[#ffd700] via-[#fceab8] to-[#e6c280] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(255,215,0,0.35)]">
               Qualifications
             </span>
           </h3>
-          <p className="font-outfit text-lg sm:text-xl md:text-2xl text-[#f0ebd8] max-w-3xl font-light mt-4 leading-relaxed">
+          <p className="font-outfit text-base sm:text-lg md:text-[clamp(1.05rem,1.2vw,1.35rem)] text-[#f0ebd8] max-w-3xl font-light mt-4 leading-relaxed">
             Rigorous technical training combining advanced data science, artificial intelligence research, and core engineering fundamentals.
           </p>
         </div>
@@ -300,7 +300,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Degree 1: M.Sc. Data Science */}
           <div
-            className={`group relative tactile-card backdrop-blur-md p-8 sm:p-12 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
+            className={`group relative tactile-card backdrop-blur-md p-6 sm:p-8 lg:p-10 xl:p-11 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
               highlightTarget === 'education'
                 ? 'bg-[#1a2e16] border-[#ffd700] ring-4 ring-[#ffd700]/80 shadow-[0_0_60px_rgba(255,215,0,0.85),0_0_100px_rgba(133,34,56,0.6),0_20px_50px_rgba(10,18,8,0.95)] scale-[1.02] z-20'
                 : 'bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)]'
@@ -378,7 +378,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
 
           {/* Degree 2: B.E. Electronics & Telecommunication */}
           <div
-            className={`group relative tactile-card backdrop-blur-md p-8 sm:p-12 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
+            className={`group relative tactile-card backdrop-blur-md p-6 sm:p-8 lg:p-10 xl:p-11 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
               highlightTarget === 'education'
                 ? 'bg-[#1a2e16] border-[#ffd700] ring-4 ring-[#ffd700]/80 shadow-[0_0_60px_rgba(255,215,0,0.85),0_0_100px_rgba(133,34,56,0.6),0_20px_50px_rgba(10,18,8,0.95)] scale-[1.02] z-20'
                 : 'bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)]'
@@ -465,13 +465,13 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
               Scientific Rigor & Publications
             </span>
           </div>
-          <h3 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal text-[#faf8f3] leading-[1.06] tracking-tight">
+          <h3 className="font-editorial text-3xl sm:text-5xl lg:text-[clamp(2.5rem,4.2vw,4.75rem)] font-normal text-[#faf8f3] leading-[1.08] tracking-tight">
             Peer-Reviewed{' '}
             <span className="italic bg-gradient-to-r from-[#ffd700] via-[#fceab8] to-[#e6c280] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(255,215,0,0.35)]">
               Academic Research
             </span>
           </h3>
-          <p className="font-outfit text-lg sm:text-xl md:text-2xl text-[#f0ebd8] max-w-3xl font-light mt-4 leading-relaxed">
+          <p className="font-outfit text-base sm:text-lg md:text-[clamp(1.05rem,1.2vw,1.35rem)] text-[#f0ebd8] max-w-3xl font-light mt-4 leading-relaxed">
             Published contributions demonstrating computer vision modeling, edge robotics, and scientific rigor across international IEEE and Springer conferences.
           </p>
         </div>
@@ -479,7 +479,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Research Paper 1: IEEE INCET */}
           <div
-            className={`group relative tactile-card backdrop-blur-md p-8 sm:p-12 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
+            className={`group relative tactile-card backdrop-blur-md p-6 sm:p-8 lg:p-10 xl:p-11 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
               highlightTarget === 'peer-review'
                 ? 'bg-[#1a2e16] border-[#ffd700] ring-4 ring-[#ffd700]/80 shadow-[0_0_60px_rgba(255,215,0,0.85),0_0_100px_rgba(133,34,56,0.6),0_20px_50px_rgba(10,18,8,0.95)] scale-[1.02] z-20'
                 : 'bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)]'
@@ -574,7 +574,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
 
           {/* Research Paper 2: Springer ICICCD */}
           <div
-            className={`group relative tactile-card backdrop-blur-md p-8 sm:p-12 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
+            className={`group relative tactile-card backdrop-blur-md p-6 sm:p-8 lg:p-10 xl:p-11 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
               highlightTarget === 'peer-review'
                 ? 'bg-[#1a2e16] border-[#ffd700] ring-4 ring-[#ffd700]/80 shadow-[0_0_60px_rgba(255,215,0,0.85),0_0_100px_rgba(133,34,56,0.6),0_20px_50px_rgba(10,18,8,0.95)] scale-[1.02] z-20'
                 : 'bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)]'
@@ -678,13 +678,13 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
               Technical Arsenal & Core Stack
             </span>
           </div>
-          <h3 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal text-[#faf8f3] leading-[1.06] tracking-tight">
+          <h3 className="font-editorial text-3xl sm:text-5xl lg:text-[clamp(2.5rem,4.2vw,4.75rem)] font-normal text-[#faf8f3] leading-[1.08] tracking-tight">
             Competencies &{' '}
             <span className="italic bg-gradient-to-r from-[#ffd700] via-[#fceab8] to-[#e6c280] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(255,215,0,0.35)]">
               Skill Matrix
             </span>
           </h3>
-          <p className="font-outfit text-lg sm:text-xl md:text-2xl text-[#f0ebd8] max-w-3xl font-light mt-4 leading-relaxed">
+          <p className="font-outfit text-base sm:text-lg md:text-[clamp(1.05rem,1.2vw,1.35rem)] text-[#f0ebd8] max-w-3xl font-light mt-4 leading-relaxed">
             Hands-on technical proficiency across cloud data architectures, generative AI orchestrations, and production data workflows.
           </p>
         </div>
@@ -692,7 +692,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Skill Pillar 1 */}
           <div
-            className={`group relative tactile-card backdrop-blur-md p-8 sm:p-9 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
+            className={`group relative tactile-card backdrop-blur-md p-6 sm:p-7 lg:p-8 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
               highlightTarget === 'skills'
                 ? 'bg-[#1a2e16] border-[#ffd700] ring-4 ring-[#ffd700]/80 shadow-[0_0_60px_rgba(255,215,0,0.85),0_0_100px_rgba(133,34,56,0.6),0_20px_50px_rgba(10,18,8,0.95)] scale-[1.02] z-20'
                 : 'bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)]'
@@ -747,7 +747,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
 
           {/* Skill Pillar 2 */}
           <div
-            className={`group relative tactile-card backdrop-blur-md p-8 sm:p-9 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
+            className={`group relative tactile-card backdrop-blur-md p-6 sm:p-7 lg:p-8 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
               highlightTarget === 'skills'
                 ? 'bg-[#1a2e16] border-[#ffd700] ring-4 ring-[#ffd700]/80 shadow-[0_0_60px_rgba(255,215,0,0.85),0_0_100px_rgba(133,34,56,0.6),0_20px_50px_rgba(10,18,8,0.95)] scale-[1.02] z-20'
                 : 'bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)]'
@@ -802,7 +802,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
 
           {/* Skill Pillar 3 */}
           <div
-            className={`group relative tactile-card backdrop-blur-md p-8 sm:p-9 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
+            className={`group relative tactile-card backdrop-blur-md p-6 sm:p-7 lg:p-8 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
               highlightTarget === 'skills'
                 ? 'bg-[#1a2e16] border-[#ffd700] ring-4 ring-[#ffd700]/80 shadow-[0_0_60px_rgba(255,215,0,0.85),0_0_100px_rgba(133,34,56,0.6),0_20px_50px_rgba(10,18,8,0.95)] scale-[1.02] z-20'
                 : 'bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)]'
@@ -857,7 +857,7 @@ export const ArchitectureDeepDive: React.FC<ArchitectureDeepDiveProps> = ({ high
 
           {/* Skill Pillar 4 */}
           <div
-            className={`group relative tactile-card backdrop-blur-md p-8 sm:p-9 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
+            className={`group relative tactile-card backdrop-blur-md p-6 sm:p-7 lg:p-8 rounded-3xl flex flex-col justify-between transition-all duration-500 overflow-hidden ${
               highlightTarget === 'skills'
                 ? 'bg-[#1a2e16] border-[#ffd700] ring-4 ring-[#ffd700]/80 shadow-[0_0_60px_rgba(255,215,0,0.85),0_0_100px_rgba(133,34,56,0.6),0_20px_50px_rgba(10,18,8,0.95)] scale-[1.02] z-20'
                 : 'bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)]'

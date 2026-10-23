@@ -3,7 +3,7 @@
 A bespoke, editorial 60 FPS interactive portfolio engineered for Data & AI applications, scalable architectures, and real-time canvas interactions.
 
 [![Live Demo Status](https://img.shields.io/badge/Live%20Demo-v2.0%20Active-emerald?style=for-the-badge&logo=githubpages&logoColor=white)](https://abhimanyu-kanase.github.io/cursor-portfolio/)
-[![Portfolio Build](https://img.shields.io/badge/Build%20Version-3.5%20(Stage%203)-amber?style=for-the-badge&logo=git&logoColor=white)](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-3)
+[![Portfolio Build](https://img.shields.io/badge/Active%20Stage-stage--4%20(v4.1)-purple?style=for-the-badge&logo=git&logoColor=white)](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-4)
 [![Main Branch](https://img.shields.io/badge/Branch-main-blue?style=for-the-badge&logo=git)](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/main)
 
 ---
@@ -14,27 +14,24 @@ A bespoke, editorial 60 FPS interactive portfolio engineered for Data & AI appli
 | :--- | :--- | :--- |
 | **Live Demo URL** | [abhimanyu-kanase.github.io/cursor-portfolio](https://abhimanyu-kanase.github.io/cursor-portfolio/) | Hosted on GitHub Pages (`gh-pages` branch) |
 | **Live Demo Iteration** | **Version 2.0 (Active)** | Current production release deployed to the web |
-| **Underlying Build Version** | **Version 3.5 (Stage 3)** | Sourced directly from `main` & `stage-3` (Commit `a8a3df6`+) |
-| **Active Development Branch** | [`stage-3`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-3) | Ongoing development & active stage branch |
+| **Underlying Build Version** | **Version 3.5 (Stage 3)** / In Progress: **Stage 4** | Live Demo v2.0 powered by Build 3.5 |
+| **Active Development Branch** | [`stage-4`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-4) | Dynamic Viewport Scaling Engine (Build 4.1) |
 | **Primary Production Branch** | [`main`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/main) | Production-ready mirrored branch containing all merged stages |
 
 > **Note for Recruiters & Engineering Reviewers**:  
 > While visitors navigating the live portfolio website experience a clean, distraction-free editorial interface without internal software version labels, Git visitors can reference this matrix to inspect the chronological development stages preserved across individual branches:
 > - **Live Demo v1.0** *(Archived / Release v1.0.0)*: Initial Canvas 2D gaze tracker and foundational layout.
-> - **Live Demo v2.0** *(Active / Powered by Build Version 3.5)*: Comprehensive overhaul featuring:
->   - **Architecture Deep-Dive & 10-Project Catalog**: Full technical case studies with architecture schematics, stack breakdown, and live GitHub/demo links.
->   - **Interactive Resume & Executive Dossier**: Full career trajectory, publication highlights, and PDF export (`#/resume`).
->   - **Direct Contact & Mail Dispatcher**: End-to-end client email delivery with Resend and EmailJS fallbacks (`#/contact`).
->   - **Peer-Reviewed Scientific Research**: Direct IEEE Xplore and Springer Nature LNNS publication access.
->   - **Luxury Editorial Aesthetic**: Reordered flow, 3cm wide editorial spread, tactile plaster textures, and Italian Walnut hover transitions.
+> - **Live Demo v2.0** *(Active / Powered by Build Version 3.5)*: Comprehensive overhaul featuring 10-project architecture catalog, interactive resume, email dispatch, IEEE/Springer research links, and tactile plaster styling.
+> - **Stage 4 Development** *(Active / Build Version 4.1)*: Dynamic Viewport Scaling Engine, dual-axis bounded canvas sizing, fluid CSS `clamp()` typography, and universal laptop display scaling resolution.
 
 ---
 
 ### 🌿 Chronological Branch Structure
 
 Recruiters are invited to inspect how the portfolio developed incrementally across distinct stages:
+- [`stage-4`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-4): Active stage — Dynamic Viewport Scaling Engine, dual-axis bounded canvas sizing, fluid CSS clamp typography, and universal laptop collision prevention (**Build v4.1**).
 - [`main`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/main): Master production branch reflecting the latest merged build (**Build v3.5**).
-- [`stage-3`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-3): Latest active stage — UI reordering, dedicated education section, tactile card texture unification, and publication linkages (**Build v3.5**).
+- [`stage-3`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-3): Stage 3 development — UI reordering, dedicated education section, tactile card texture unification, and publication linkages (**Build v3.5**).
 - [`stage-2`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/stage-2): Stage 2 development — complete 10-project architecture catalog, interactive deep-dive modals, and horizontal card layouts (**Build v2.4**).
 - [`gh-pages`](https://github.com/abhimanyu-kanase/cursor-portfolio/tree/gh-pages): Distribution branch serving the **Live Demo (v2.0)**.
 

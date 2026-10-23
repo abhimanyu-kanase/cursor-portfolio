@@ -15,7 +15,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
   return (
     <section
       id="about"
-      className="py-24 sm:py-28 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-[#3e5630]/60 max-w-[1720px] 2xl:max-w-[1780px] w-full mx-auto select-none"
+      className="py-20 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-10 xl:px-14 border-t border-[#3e5630]/60 max-w-[min(94vw,1760px)] w-full mx-auto select-none"
     >
       {/* Section Header with Regal Architectural Spread */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 border-b border-[#3e5630]/50 pb-8">
@@ -26,7 +26,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
               Profile & Academic Background
             </span>
           </div>
-          <h2 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal text-[#faf8f3] leading-[1.06] tracking-tight">
+          <h2 className="font-editorial text-3xl sm:text-5xl lg:text-[clamp(2.5rem,4.2vw,4.75rem)] font-normal text-[#faf8f3] leading-[1.08] tracking-tight">
             Engineering <span className="italic bg-gradient-to-r from-[#ffd700] via-[#fceab8] to-[#e6c280] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(255,215,0,0.35)]">Data, AI</span> & Scalable Systems
           </h2>
         </div>
@@ -38,7 +38,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
       </div>
 
       {/* Full-Width Grand Executive Candidate Dossier Card */}
-      <div className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-8 sm:p-12 lg:p-16 rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] overflow-hidden w-full">
+      <div className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-6 sm:p-8 lg:p-12 xl:p-14 rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] overflow-hidden w-full">
         {/* Walnut Left Accent Bar */}
         <div className="absolute left-0 top-8 bottom-8 w-2 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
 
@@ -53,7 +53,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
                 <Sparkles className="w-4 h-4 text-[#ffd700]" />
                 <span>Candidate Profile & Executive Summary</span>
               </div>
-              <h3 className="font-editorial text-3xl sm:text-5xl lg:text-6xl text-[#fffff8] group-hover:text-[#ffd700] font-medium tracking-tight transition-colors">
+              <h3 className="font-editorial text-2xl sm:text-4xl lg:text-[clamp(2rem,3.2vw,3.75rem)] text-[#fffff8] group-hover:text-[#ffd700] font-medium tracking-tight transition-colors">
                 Abhimanyu Kanase
               </h3>
             </div>
@@ -62,7 +62,7 @@ export const ProfileBackground: React.FC<ProfileBackgroundProps> = ({
             </span>
           </div>
 
-          <p className="font-editorial italic text-2xl sm:text-3xl lg:text-4xl text-[#f5d77f] font-light leading-snug max-w-4xl mb-8">
+          <p className="font-editorial italic text-xl sm:text-2xl lg:text-[clamp(1.35rem,1.8vw,2.25rem)] text-[#f5d77f] font-light leading-snug max-w-4xl mb-8">
             Data & AI-focused engineer translating intricate technical systems into high-impact, decision-ready intelligence.
           </p>
 

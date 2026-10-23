@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
   return (
     <footer
       id="contact"
-      className="py-20 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-[#3e5630]/60 max-w-[1720px] 2xl:max-w-[1780px] w-full mx-auto font-outfit text-sm text-[#f0ebd8] select-none"
+      className="py-16 sm:py-20 px-4 sm:px-6 lg:px-10 xl:px-14 border-t border-[#3e5630]/60 max-w-[min(94vw,1760px)] w-full mx-auto font-outfit text-sm text-[#f0ebd8] select-none"
     >
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
         <div>

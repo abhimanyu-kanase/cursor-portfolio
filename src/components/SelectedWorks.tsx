@@ -8,7 +8,7 @@ interface SelectedWorksProps {
 
 export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onSelectProject }) => {
   return (
-    <section id="works" className="py-28 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-[#3e5630]/60 max-w-[1720px] 2xl:max-w-[1780px] w-full mx-auto select-none">
+    <section id="works" className="py-20 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-10 xl:px-14 border-t border-[#3e5630]/60 max-w-[min(94vw,1760px)] w-full mx-auto select-none">
       {/* Section Header with Horizontal Spread */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8 border-b border-[#3e5630]/60 pb-10">
         <div>
@@ -18,11 +18,11 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onSelectProject })
               Curated Portfolio <span className="text-[#ffd700]/60 mx-1.5 font-light">/</span> 2023 — 2026
             </span>
           </div>
-          <h2 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal text-[#faf8f3] leading-[1.06] tracking-tight">
+          <h2 className="font-editorial text-3xl sm:text-5xl lg:text-[clamp(2.5rem,4.2vw,4.75rem)] font-normal text-[#faf8f3] leading-[1.08] tracking-tight">
             Experiences From <span className="italic bg-gradient-to-r from-[#ffd700] via-[#fceab8] to-[#e6c280] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(255,215,0,0.35)]">Projects I've Built</span>
           </h2>
         </div>
-        <p className="font-outfit text-lg sm:text-xl md:text-2xl text-[#f0ebd8] max-w-3xl font-light leading-relaxed">
+        <p className="font-outfit text-base sm:text-lg md:text-[clamp(1.05rem,1.2vw,1.35rem)] text-[#f0ebd8] max-w-3xl font-light leading-relaxed">
           Hands-on architectural takeaways, engineering breakthroughs, and measurable outcomes from the autonomous AI systems, cloud data pipelines, and vision models I have created.
         </p>
       </div>
@@ -33,7 +33,7 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onSelectProject })
           <div
             key={proj.number}
             onClick={() => onSelectProject?.(proj.slug)}
-            className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-8 sm:p-12 lg:p-14 rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] cursor-pointer overflow-hidden"
+            className="group relative tactile-card bg-[#142210]/85 hover:bg-[#1a2d15]/95 border border-[#3e5630]/60 hover:border-[#ffd700] backdrop-blur-md p-6 sm:p-8 lg:p-11 xl:p-12 rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(10,18,8,0.95),0_0_40px_rgba(255,215,0,0.35)] cursor-pointer overflow-hidden"
           >
             {/* Walnut hover accent line */}
             <div className="absolute left-0 top-8 bottom-8 w-2 bg-gradient-to-b from-[#ffd700] via-[#852238] to-[#362216] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none duration-300 z-20" />
@@ -47,7 +47,7 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onSelectProject })
                 <span className="font-mono text-xl sm:text-2xl lg:text-3xl font-bold text-[#b38a3e] group-hover:text-[#ffd700] group-hover:scale-110 group-hover:drop-shadow-[0_2px_14px_rgba(255,215,0,0.85)] transition-all">
                   {proj.number}
                 </span>
-                <h3 className="font-editorial text-[30px] sm:text-[38px] lg:text-[44px] text-[#faf8f3] group-hover:text-[#ffd700] group-hover:drop-shadow-[0_4px_24px_rgba(230,194,128,0.45),0_8px_30px_rgba(10,18,8,0.95)] transition-all duration-300 leading-snug font-medium">
+                <h3 className="font-editorial text-[24px] sm:text-[32px] lg:text-[clamp(26px,2.4vw,40px)] text-[#faf8f3] group-hover:text-[#ffd700] group-hover:drop-shadow-[0_4px_24px_rgba(230,194,128,0.45),0_8px_30px_rgba(10,18,8,0.95)] transition-all duration-300 leading-snug font-medium">
                   {proj.title}
                 </h3>
               </div>
