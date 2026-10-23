@@ -96,7 +96,7 @@ html {
 /* Hero Section Dynamic Responsive Geometry */
 .hero-left-box {
   position: absolute;
-  top: clamp(160px, 24vh, 275px);
+  bottom: clamp(90px, 22vh, 210px);
   left: clamp(1.5rem, 3.5vw, 4rem);
   max-width: min(32vw, 26rem);
   display: flex;
@@ -106,7 +106,7 @@ html {
 
 .hero-right-box {
   position: absolute;
-  top: clamp(160px, 24vh, 275px);
+  bottom: clamp(90px, 22vh, 210px);
   right: clamp(1.5rem, 3.5vw, 4rem);
   max-width: min(32vw, 25rem);
   display: flex;
@@ -120,11 +120,32 @@ html {
   }
 }
 
+.hero-kicker {
+  font-family: inherit;
+  font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #e6c280;
+  display: block;
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+
+.hero-heading-slot {
+  min-height: clamp(2.8rem, 4.6vw, 6.2rem);
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: clamp(0.6rem, 1vw, 1.25rem);
+}
+
 .hero-name-heading {
   font-family: Editorial, 'Playfair Display', Georgia, serif;
   font-size: clamp(2.6rem, 4.4vw, 6.2rem) !important;
   line-height: 0.92 !important;
   letter-spacing: -0.03em;
+  color: #fffff8;
+  margin: 0;
 }
 
 .hero-portfolio-heading {
@@ -132,10 +153,26 @@ html {
   font-size: clamp(2.1rem, 3.4vw, 4.8rem) !important;
   line-height: 0.96 !important;
   letter-spacing: -0.03em;
+  color: #fffff8;
+  margin: 0;
+}
+
+.hero-bio-slot {
+  min-height: clamp(4.2rem, 6.0vw, 6.5rem);
+  margin-bottom: clamp(1rem, 1.4vw, 1.6rem);
 }
 
 .hero-bio-copy {
   font-size: clamp(0.85rem, 1.0vw, 1.1rem) !important;
   line-height: 1.6 !important;
+  color: #faf8f3;
+  margin: 0;
 }
+
+.hero-button-slot {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
 
