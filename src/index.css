@@ -96,25 +96,21 @@ html {
 /* Hero Section Dynamic Responsive Geometry */
 .hero-left-box {
   position: absolute;
-  top: clamp(140px, 22vh, 260px);
-  bottom: clamp(55px, 15vh, 150px);
+  top: clamp(160px, 24vh, 275px);
   left: clamp(1.5rem, 3.5vw, 4rem);
   max-width: min(32vw, 26rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   z-index: 20;
 }
 
 .hero-right-box {
   position: absolute;
-  top: clamp(140px, 22vh, 260px);
-  bottom: clamp(55px, 15vh, 150px);
+  top: clamp(160px, 24vh, 275px);
   right: clamp(1.5rem, 3.5vw, 4rem);
   max-width: min(32vw, 25rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   z-index: 20;
 }
 

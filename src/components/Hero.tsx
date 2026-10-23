@@ -29,25 +29,23 @@ export const Hero: React.FC<HeroProps> = ({ onEyeContactChange, onOpenResume, on
 
       {/* Hero Typography Overlay (Left Side) */}
       <div className="hero-left-box pointer-events-auto">
-        <div>
-          {/* Kicker */}
-          <span className="font-sans text-xs sm:text-sm md:text-base font-bold tracking-[0.32em] uppercase text-[#e6c280] block mb-1.5 sm:mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-            Hi, I'm
-          </span>
+        {/* Kicker */}
+        <span className="font-sans text-xs sm:text-sm md:text-base font-bold tracking-[0.32em] uppercase text-[#e6c280] block mb-1.5 sm:mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+          Hi, I'm
+        </span>
 
-          {/* Large editorial serif name */}
-          <h1 className="hero-name-heading text-[#fffff8] drop-shadow-[0_8px_32px_rgba(230,194,128,0.28),0_12px_45px_rgba(10,18,8,0.9)] font-normal mb-3 sm:mb-4 lg:mb-5 -ml-1">
-            Abhimanyu
-          </h1>
+        {/* Large editorial serif name */}
+        <h1 className="hero-name-heading text-[#fffff8] drop-shadow-[0_8px_32px_rgba(230,194,128,0.28),0_12px_45px_rgba(10,18,8,0.9)] font-normal mb-3 sm:mb-4 lg:mb-5 -ml-1">
+          Abhimanyu
+        </h1>
 
-          {/* Short Profile / Bio */}
-          <p className="hero-bio-copy text-[#faf8f3] font-sans font-light drop-shadow-[0_2px_10px_rgba(10,18,8,0.8)]">
-            Data & AI Engineer specializing in multi-agent LLM systems, scalable cloud data architectures, and real-time interactive interfaces engineered to translate complex technical problems into business-ready intelligence.
-          </p>
-        </div>
+        {/* Short Profile / Bio */}
+        <p className="hero-bio-copy text-[#faf8f3] font-sans font-light mb-5 sm:mb-6 lg:mb-7 drop-shadow-[0_2px_10px_rgba(10,18,8,0.8)]">
+          Data & AI Engineer specializing in multi-agent LLM systems, scalable cloud data architectures, and real-time interactive interfaces engineered to translate complex technical problems into business-ready intelligence.
+        </p>
 
         {/* Action Buttons: Resume & Let's Talk — Grounded Near Character Shoulder */}
-        <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 lg:gap-5 pt-3 sm:pt-4">
+        <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 lg:gap-5">
           {/* Resume */}
           <button
             onClick={() => {
@@ -83,25 +81,23 @@ export const Hero: React.FC<HeroProps> = ({ onEyeContactChange, onOpenResume, on
 
       {/* Hero Typography Overlay (Right Side) — Open Editorial Typography */}
       <div className="hidden lg:flex hero-right-box pointer-events-auto text-left">
-        <div>
-          {/* Kicker matching "Hi, I'm" */}
-          <span className="font-sans text-xs sm:text-sm md:text-base font-bold tracking-[0.32em] uppercase text-[#e6c280] block mb-1.5 sm:mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-            Welcome to my
-          </span>
+        {/* Kicker matching "Hi, I'm" */}
+        <span className="font-sans text-xs sm:text-sm md:text-base font-bold tracking-[0.32em] uppercase text-[#e6c280] block mb-1.5 sm:mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+          Welcome to my
+        </span>
 
-          {/* Large, stately editorial title matching "Abhimanyu" */}
-          <h2 className="hero-portfolio-heading text-[#fffff8] drop-shadow-[0_8px_32px_rgba(230,194,128,0.28),0_12px_45px_rgba(10,18,8,0.9)] font-normal mb-3 sm:mb-4 lg:mb-5">
-            Life Portfolio
-          </h2>
+        {/* Large, stately editorial title matching "Abhimanyu" */}
+        <h2 className="hero-portfolio-heading text-[#fffff8] drop-shadow-[0_8px_32px_rgba(230,194,128,0.28),0_12px_45px_rgba(10,18,8,0.9)] font-normal mb-3 sm:mb-4 lg:mb-5">
+          Life Portfolio
+        </h2>
 
-          {/* Explaining why the space exists */}
-          <p className="hero-bio-copy text-[#faf8f3] font-sans font-light drop-shadow-[0_2px_10px_rgba(10,18,8,0.8)]">
-            Designed as an interactive living exhibition rather than a static resume—bringing engineering craft to life so you can explore real systems, examine architectural thinking, and experience the journey firsthand.
-          </p>
-        </div>
+        {/* Explaining why the space exists */}
+        <p className="hero-bio-copy text-[#faf8f3] font-sans font-light mb-5 sm:mb-6 lg:mb-7 drop-shadow-[0_2px_10px_rgba(10,18,8,0.8)]">
+          Designed as an interactive living exhibition rather than a static resume—bringing engineering craft to life so you can explore real systems, examine architectural thinking, and experience the journey firsthand.
+        </p>
 
         {/* Action Button (Right Side) — Aligned and Symmetrical with Left Side */}
-        <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 lg:gap-5 pt-3 sm:pt-4">
+        <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 lg:gap-5">
           <button
             onClick={() => setIsAuditOpen((prev) => !prev)}
             className="group px-6 sm:px-8 lg:px-9 py-3 sm:py-3.5 lg:py-4 rounded-full bg-gradient-to-r from-[#380712]/92 via-[#4a0a18]/90 to-[#2a1a10]/92 hover:from-[#5a1020] hover:to-[#380712] border border-[#852238]/80 hover:border-[#ffd700] hover:shadow-[0_0_32px_rgba(133,34,56,0.6),0_0_16px_rgba(255,215,0,0.3)] text-[#fffff8] transition-all duration-200 font-sans font-semibold text-xs sm:text-sm md:text-base flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md shadow-[0_8px_28px_rgba(56,7,18,0.55)]"
