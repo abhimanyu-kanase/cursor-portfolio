@@ -1,7 +1,7 @@
 # Engineering Bug Report: Laptop Display Scaling & Viewport Collision (Stage 4)
 
 **Document ID**: `BUG-2026-10-ST4-001`  
-**Status**: Root Cause Identified • Resolution Plan Formulated  
+**Status**: Strategy Approved • Method 2 (Fluid Dynamic Vector Scaling) Selected • Ready for Execution  
 **Branch**: `stage-4`  
 **Date**: October 23, 2026  
 **Author**: Abhimanyu Kanase (Data & AI Engineer)  
@@ -74,44 +74,88 @@ The application relied on Tailwind horizontal breakpoints (`lg: 1024px`, `xl: 12
 
 ---
 
-## 3. Comprehensive Resolution Plan
+## 3. Architecture Strategy Evaluation
 
-```mermaid
-flowchart TD
-    A["Issue: Laptop Viewport Zoom / Collision"] --> B["1. Character Canvas Scaling"]
-    A --> C["2. Fluid Hero Typography"]
-    A --> D["3. Vertical Height Constraints"]
-    A --> E["4. Global Section Fluidity"]
+Two potential strategies for dynamic scaling were evaluated:
 
-    B --> B1["Dual-Axis Clamping: drawH = min(canvas.height * 0.72, canvas.width * 0.42, 600px)"]
-    B --> B2["Preserve 400px+ side margins on 1280px-1536px viewports"]
-
-    C --> C1["Replace hardcoded top-[300px] with clamp(110px, 14vh, 200px)"]
-    C --> C2["Replace text-[8.5rem] with clamp(3rem, 6vw, 7.5rem)"]
-    C --> C3["Fluid paragraph and kicker scaling"]
-
-    D --> D1["Add @media (max-height: 800px) rules"]
-    D --> D2["Ensure CTA buttons sit comfortably above fold (bottom >= 32px)"]
-
-    E --> E1["Preserve 3cm wide spread on 1440p/4K"]
-    E --> E2["Fluid max-width: w-[min(94vw, 1720px)]"]
-```
-
-### Proposed Code Modifications
-1. **`src/components/CharacterTrackerCanvas.tsx`**:
-   - Re-architect canvas draw dimensions to bound scale by both width AND height.
-   - Clamp the maximum character width on screens under 1600px width so the central character never exceeds $50\%$ of screen width.
-2. **`src/components/Hero.tsx`**:
-   - Replace fixed `top-[300px]` with fluid responsive positioning: `top-[clamp(110px,16vh,220px)]`.
-   - Implement fluid CSS `clamp()` typography on `Abhimanyu` (`clamp(3.25rem, 6.2vw, 8rem)`) and `Life Portfolio` (`clamp(2.5rem, 4.8vw, 5.5rem)`).
-   - Constrain bio text width to `max-w-md xl:max-w-lg` with fluid font sizing (`clamp(0.95rem, 1.15vw, 1.25rem)`).
-   - Guarantee CTA button visibility above the fold on all screens with height $\ge 600\text{px}$.
-3. **`src/components/ProfileBackground.tsx` & Main Page Sections**:
-   - Apply fluid container limits `max-w-[min(94vw,1720px)]` to preserve wide architectural spread on 4K/1440p while scaling smoothly down to 13"-15" laptops.
+| Architectural Metric | Method 1: Global Viewport Scale Engine (`zoom` / transform) | Method 2: Fluid Dynamic Vector Scaling (Selected) |
+| :--- | :--- | :--- |
+| **Gaze Tracking Accuracy** | ⚠️ Requires sub-pixel matrix recalibration of mouse coordinates | ✅ **100% Exact**: Canvas client rect and mouse angles remain native |
+| **Typography Sharpness** | ⚠️ Browser zoom scaling can cause slight sub-pixel font blurring | ✅ **Razor Sharp**: Pure vector CSS `clamp()` rendering |
+| **Readability on Laptops** | ❌ Uniform shrinking reduces small paragraphs below comfortable reading size | ✅ **Controlled Clamping**: Titles contract while body copy stays legible |
+| **Layout Flow** | ⚠️ Rigid fixed aspect ratio bounding | ✅ **Adaptive 3-Column Symmetry**: Fluid gutter and fold distribution |
+| **Browser Compatibility** | ⚠️ CSS `zoom` legacy implementation quirks across engines | ✅ **Universal Standards**: Modern CSS `clamp()`, `min()`, `vw`, `vh` |
 
 ---
 
-## 4. Verification & Testing Matrix
+## 4. Confirmed Resolution Plan: Method 2 (Fluid Dynamic Vector Scaling)
+
+```mermaid
+flowchart TD
+    A["Selected Solution: Fluid Dynamic Vector Scaling"] --> B["1. Dual-Axis Character Bounding"]
+    A --> C["2. Continuous CSS clamp() Typography"]
+    A --> D["3. Viewport-Relative Positioning"]
+    A --> E["4. Global Container Fluidity"]
+
+    B --> B1["Calculate maxAllowedWidth = min(canvas.width * 0.42, 680 * dpr)"]
+    B --> B2["Calculate maxAllowedHeight = min(canvas.height * 0.72, 620 * dpr)"]
+    B --> B3["Dynamic character scale guarantees >= 380px flank clearance on 1280px+ viewports"]
+
+    C --> C1["Abhimanyu: clamp(3.25rem, 6.5vw, 8.5rem)"]
+    C --> C2["Life Portfolio: clamp(2.5rem, 4.5vw, 5.5rem)"]
+    C --> C3["Bio Paragraph: clamp(0.95rem, 1.15vw, 1.25rem)"]
+
+    D --> D1["Hero Vertical Offset: clamp(100px, 15vh, 220px)"]
+    D --> D2["Left / Right Text Bounds: max-w-[min(38vw, 36rem)]"]
+    D --> D3["Guaranteed CTA Button Clearance above fold on all screens >= 600px height"]
+
+    E --> E1["Main Page Max-Width: w-[min(94vw, 1720px)]"]
+    E --> E2["Preserve 3cm wide spread on 1440p/4K while scaling seamlessly on laptops"]
+```
+
+### Detailed Implementation Specifications
+
+#### 1. `src/components/CharacterTrackerCanvas.tsx`
+- Replace hardcoded `SCALE = 0.75` with dynamic dual-axis bounded sizing:
+  ```typescript
+  // Dynamically bound character so it never dominates smaller viewports
+  const maxAllowedWidth = Math.min(canvas.width * 0.42, 680 * dpr);
+  const maxAllowedHeight = Math.min(canvas.height * 0.72, 620 * dpr);
+  
+  // Calculate aspect-preserving dimensions within dynamic bounds
+  let drawW = (canvas.height / imageAspect);
+  let drawH = canvas.height;
+  
+  const scaleFactor = Math.min(
+    0.75,
+    maxAllowedWidth / (drawH * imageAspect),
+    maxAllowedHeight / drawH
+  );
+  
+  drawW = (canvas.height * imageAspect) * scaleFactor;
+  drawH = canvas.height * scaleFactor;
+  ```
+- This guarantees the character never consumes more than **42% of the screen width** or **72% of the screen height**, providing at least 380px–450px of clear space on both sides for text.
+
+#### 2. `src/components/Hero.tsx`
+- Replace hardcoded `top-[300px]` with fluid viewport placement:
+  `className="absolute top-[clamp(100px,15vh,220px)] left-6 lg:left-12 xl:left-16 max-w-[min(38vw,36rem)] ..."`
+- Fluid typography:
+  - `Abhimanyu`: `text-[clamp(3.25rem,6.2vw,8.5rem)]`
+  - `Life Portfolio`: `text-[clamp(2.5rem,4.5vw,5.5rem)]`
+  - Body paragraphs: `text-[clamp(0.95rem,1.15vw,1.25rem)]` with `leading-relaxed`
+- CTA Buttons:
+  - Padding: `px-6 py-3 sm:px-8 sm:py-3.5`
+  - Button container spacing: `mb-4` so buttons sit comfortably $\ge 30\text{px}$ above the browser fold on screens $\ge 600\text{px}$ high.
+
+#### 3. Main Page Global Sections
+- In `ProfileBackground.tsx`, `SelectedWorks.tsx`, and `ArchitectureDeepDive.tsx`:
+  - Replace rigid max-widths with fluid bounds: `w-[min(94vw, 1720px)] mx-auto`.
+  - Maintain the grand "3cm spread" on wide 1440p/4K monitors while scaling down smoothly on 13"-15" laptops.
+
+---
+
+## 5. Verification & Testing Matrix
 
 | Viewport Profile | Physical Dimensions | Effective CSS Viewport | Expected Behavior |
 | :--- | :--- | :--- | :--- |
