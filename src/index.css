@@ -92,3 +92,46 @@ html {
   -webkit-text-stroke: 1px rgba(230, 194, 128, 0.5);
   color: transparent;
 }
+
+/* Hero Section Dynamic Responsive Geometry */
+.hero-left-box {
+  position: absolute;
+  top: clamp(140px, 19vh, 260px);
+  left: clamp(1.5rem, 3.5vw, 4rem);
+  max-width: min(32vw, 26rem);
+  z-index: 20;
+}
+
+.hero-right-box {
+  position: absolute;
+  top: clamp(140px, 19vh, 260px);
+  right: clamp(1.5rem, 3.5vw, 4rem);
+  max-width: min(32vw, 25rem);
+  z-index: 20;
+}
+
+@media (max-width: 1023px) {
+  .hero-left-box {
+    max-width: min(90vw, 36rem);
+  }
+}
+
+.hero-name-heading {
+  font-family: Editorial, 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.6rem, 4.4vw, 6.2rem) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.03em;
+}
+
+.hero-portfolio-heading {
+  font-family: Editorial, 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.1rem, 3.4vw, 4.8rem) !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.03em;
+}
+
+.hero-bio-copy {
+  font-size: clamp(0.85rem, 1.0vw, 1.1rem) !important;
+  line-height: 1.6 !important;
+}
+
